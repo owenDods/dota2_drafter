@@ -1,0 +1,26 @@
+{
+  "name": "dota2_drafter",
+  "description": "Dota 2 Hero Drafter",
+  "main": "index.js",
+  "authors": [
+    "Owen Dods"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "dota2"
+  ],
+  "moduleType": [
+    "amd"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "gulp": "~3.9.0"
+  }
+}
