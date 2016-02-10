@@ -10,7 +10,7 @@ var uglify = require('gulp-uglify');
 var path = {
 	js: './src/index.js',
 	out: 'bundle.js',
-	dest: './src'
+	dest: './build'
 };
 
 function handleErrors() {
