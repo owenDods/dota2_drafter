@@ -29,7 +29,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<li className={"heroesGrid__hero" + (hero.selected ? ' selected' : '')} onClick={this.onClick}>
+			<li className={"heroCell" + (hero.selected ? ' selected' : '')} onClick={this.onClick}>
 
 				<HeroAvatar name={hero.name} />
 

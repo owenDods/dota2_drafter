@@ -1,0 +1,26 @@
+.heroCell {
+
+	width: 10%;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: all 0.2s;
+	justify-content: center;
+
+	&:hover {
+		background-color: rgba(242, 242, 242, 0.2);
+	}
+
+	&.selected {
+		opacity: 0.2;
+		cursor: default;
+		background-color: rgba(242, 242, 242, 0.2);
+	}
+
+	label {
+		width: 100%;
+		text-align: center;
+		display: inline-block;
+		cursor: pointer;
+	}
+
+}
