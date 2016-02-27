@@ -2,6 +2,7 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
+var heroData = require('../data/heroes.json');
 
 var CommentBox = React.createClass({
 
@@ -167,7 +168,49 @@ var CommentForm = React.createClass({
 	}
 });
 
+// ReactDOM.render(
+// 	<CommentBox url="http://jsonplaceholder.typicode.com/comments" pollInterval={60000} />,
+// 	document.getElementById('content')
+// );
+
+var HeroView = React.createClass({
+
+	render: function () {
+
+		var heroHolders = this.props.data ? this.props.data.result.heroes.map(function(hero) {
+
+			hero.formattedName = hero.name.replace('npc_dota_hero_', '');
+
+			return (
+				<li className="hero-holder" key={hero.id}>
+
+					<div className="hero-image-holder">
+
+						<img src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + hero.formattedName + '_hphover.png?v=3162717'} />
+
+					</div>
+
+					<label>{hero.localized_name}</label>
+
+				</li>
+			);
+		}) : null;
+
+		return (
+
+			<ul>
+
+				{heroHolders}
+
+			</ul>
+
+		);
+
+	}
+
+});
+
 ReactDOM.render(
-	<CommentBox url="http://jsonplaceholder.typicode.com/comments" pollInterval={60000} />,
-	document.getElementById('content')
+	<HeroView data={heroData} />,
+	document.getElementById('heroes-holder')
 );
