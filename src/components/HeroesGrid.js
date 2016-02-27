@@ -1,51 +1,33 @@
 var React = require('react');
+var _ = require('underscore');
+
+var HeroCell = require('./HeroCell');
 
 module.exports = React.createClass({
 
 	getInitialState: function () {
 
-		return { heroes: [] };
-
-	},
-
-	componentDidMount: function() {
-
-		this.setState({ heroes: this.props.data });
-
-	},
-
-	selectHero: function (heroId) {
-
-		console.log(this.state.heroes);
+		return { heroes: this.props.data || [] };
 
 	},
 
 	render: function () {
 
-		var heroHolders = this.state.heroes.map(function(hero) {
-
-			hero.formattedName = hero.name.replace('npc_dota_hero_', '');
+		var heroCells = this.state.heroes.map(function(hero) {
 
 			return (
-				<li className="heroesGrid__hero" key={hero.id} onClick={this.selectHero.bind(this, hero.id)}>
 
-					<div className="heroesGrid__avatar">
+				<HeroCell hero={hero} key={hero.id} />
 
-						<img src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + hero.formattedName + '_hphover.png?v=3162717'} />
-
-					</div>
-
-					<label>{hero.localized_name}</label>
-
-				</li>
 			);
-		}.bind(this));
+
+		});
 
 		return (
 
 			<ul>
 
-				{heroHolders}
+				{heroCells}
 
 			</ul>
 
