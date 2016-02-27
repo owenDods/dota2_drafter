@@ -1,5 +1,7 @@
 var React = require('react');
 
+var HeroAvatar = require('./HeroAvatar');
+
 module.exports = React.createClass({
 
 	getInitialState: function () {
@@ -14,19 +16,13 @@ module.exports = React.createClass({
 
 		return this.state.selectedHeroes.map(function (hero, i) {
 
-			hero.formattedName = hero.name.replace('npc_dota_hero_', '');
-
 			var status = ((i === 0) || (i === 1) || (i === 4) || (i === 5)) ? 'ban' : 'pick';
 
 			return (
 
 				<li className={"draftConsole--" + status} key={hero.id}>
 
-					<div className="heroesGrid__avatar">
-
-						<img src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + hero.formattedName + '_hphover.png?v=3162717'} />
-
-					</div>
+					<HeroAvatar name={hero.name} />
 
 					<label>{status}</label>
 
