@@ -26,34 +26,33 @@ function handleErrors() {
 
 }
 
-gulp.task('js', function () {
+var jsWatcher  = watchify(browserify({
+	entries: [config.js.src],
+	transform: [reactify],
+	debug: true,
+	cache: {},
+	packageCache: {},
+	fullPaths: true
+}));
 
-	var watcher  = watchify(browserify({
-		entries: [config.js.src],
-		transform: [reactify],
-		debug: true,
-		cache: {},
-		packageCache: {},
-		fullPaths: true
-	}));
+var jsCompile = function () {
 
-	return watcher.on('update', function () {
+	jsWatcher.bundle()
+		.on('error', handleErrors)
+		.pipe(source(config.js.out))
+		.pipe(streamify(uglify()))
+		.pipe(gulp.dest(config.js.dest))
+		.pipe(browserSync.stream());
 
-		watcher.bundle()
-			.pipe(source(config.js.out))
-			.pipe(streamify(uglify()))
-			.pipe(gulp.dest(config.js.dest))
-			.pipe(browserSync.stream());
+	console.log('JS Compiled');
 
-		console.log('Updated');
+}
 
-	})
-	.bundle()
-	.on('error', handleErrors)
-	.pipe(source(config.js.out))
-	.pipe(streamify(uglify()))
-	.pipe(gulp.dest(config.js.dest))
-	.pipe(browserSync.stream());
+gulp.task('js-compile', jsCompile);
+
+gulp.task('js', ['js-compile'], function () {
+
+	return jsWatcher.on('update', jsCompile);
 
 });
 
