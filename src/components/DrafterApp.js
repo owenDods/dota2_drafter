@@ -7,20 +7,30 @@ module.exports = React.createClass({
 
 	getInitialState: function () {
 
-		return { heroes: this.props.data || [] };
+		return {
+			heroes: this.props.data || [],
+			selectedHeroes: []
+		};
+
+	},
+
+	onHeroSelect: function (hero) {
+
+		var selectedHeroes = this.state.selectedHeroes;
+		selectedHeroes.push(hero);
+
+		this.setState({ selectedHeroes: selectedHeroes });
 
 	},
 
 	render: function () {
 
-		var heroes = this.state.heroes;
-
 		return (
 
 			<div>
 
-				<HeroesGrid data={heroes} />
-				<DraftConsole data={heroes} />
+				<HeroesGrid data={this.state.heroes} onSelect={this.onHeroSelect} />
+				<DraftConsole data={this.state.selectedHeroes} />
 
 			</div>
 

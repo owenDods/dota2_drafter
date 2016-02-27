@@ -8,6 +8,13 @@ module.exports = React.createClass({
 
 	},
 
+	onClick: function () {
+
+		this.selectHero();
+		this.props.onSelect(this.state);
+
+	},
+
 	selectHero: function () {
 
 		this.setState({ selected: true });
@@ -22,7 +29,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<li className={"heroesGrid__hero" + (this.state.selected ? ' selected' : '')} onClick={this.selectHero}>
+			<li className={"heroesGrid__hero" + (this.state.selected ? ' selected' : '')} onClick={this.onClick}>
 
 				<div className="heroesGrid__avatar">
 

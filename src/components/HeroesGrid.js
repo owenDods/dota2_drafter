@@ -12,11 +12,13 @@ module.exports = React.createClass({
 
 	render: function () {
 
+		var onSelect = this.props.onSelect;
+
 		var heroCells = this.state.heroes.map(function(hero) {
 
 			return (
 
-				<HeroCell hero={hero} key={hero.id} />
+				<HeroCell hero={hero} key={hero.id} onSelect={onSelect}/>
 
 			);
 

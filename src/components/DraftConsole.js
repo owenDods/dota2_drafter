@@ -5,8 +5,7 @@ module.exports = React.createClass({
 	getInitialState: function () {
 
 		return {
-			selectedHeroes: [],
-			heroes: this.props.data || []
+			selectedHeroes: this.props.data || []
 		};
 
 	},
