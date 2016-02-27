@@ -11,9 +11,14 @@
 	}
 
 	&.selected {
+
 		opacity: 0.2;
 		cursor: default;
-		background-color: rgba(242, 242, 242, 0.2);
+
+		&:hover {
+			background-color: transparent;
+		}
+
 	}
 
 	label {
