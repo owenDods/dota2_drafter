@@ -12,13 +12,15 @@ module.exports = React.createClass({
 
 	renderSelectedHeroes: function () {
 
-		return this.state.selectedHeroes.map(function (hero) {
+		return this.state.selectedHeroes.map(function (hero, i) {
 
 			hero.formattedName = hero.name.replace('npc_dota_hero_', '');
 
+			var status = ((i === 0) || (i === 1) || (i === 4) || (i === 5)) ? 'ban' : 'pick';
+
 			return (
 
-				<li className={"draftConsole--" + hero.status} key={hero.id}>
+				<li className={"draftConsole--" + status} key={hero.id}>
 
 					<div className="heroesGrid__avatar">
 
@@ -26,7 +28,7 @@ module.exports = React.createClass({
 
 					</div>
 
-					<label>{hero.status}</label>
+					<label>{status}</label>
 
 				</li>
 
