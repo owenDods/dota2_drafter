@@ -12,8 +12,12 @@ module.exports = React.createClass({
 
 	onClick: function () {
 
-		this.selectHero();
-		this.props.onSelect(this.state);
+		if (!this.state.selected) {
+
+			this.selectHero();
+			this.props.onSelect(this.state);
+
+		}
 
 	},
 
