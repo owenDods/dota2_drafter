@@ -4,13 +4,10 @@ module.exports = React.createClass({
 
 	getInitialState: function () {
 
-		return { selectedHeroes: [] };
-
-	},
-
-	componentDidMount: function() {
-
-		this.setState({ selectedHeroes: this.props.selectedHeroes });
+		return {
+			selectedHeroes: [],
+			heroes: this.props.data || []
+		};
 
 	},
 
@@ -46,7 +43,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<div>
+			<div className="draftConsole">
 
 				<ul className="draftConsole__placeholder">
 

@@ -1,5 +1,4 @@
 var React = require('react');
-var _ = require('underscore');
 
 var HeroCell = require('./HeroCell');
 
@@ -25,11 +24,15 @@ module.exports = React.createClass({
 
 		return (
 
-			<ul>
+			<div className="heroesGrid">
 
-				{heroCells}
+				<ul>
 
-			</ul>
+					{heroCells}
+
+				</ul>
+
+			</div>
 
 		);
 

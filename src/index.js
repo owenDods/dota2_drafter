@@ -173,15 +173,9 @@ var CommentForm = React.createClass({
 // 	document.getElementById('content')
 // );
 
-var HeroesGrid = require('./components/HeroesGrid');
-var DraftConsole = require('./components/DraftConsole');
+var DrafterApp = require('./components/DrafterApp');
 
 ReactDOM.render(
-	<HeroesGrid data={heroData} />,
-	document.getElementById('heroesGrid')
-);
-
-ReactDOM.render(
-	<DraftConsole selectedHeroes={heroData.slice(0, 3)} />,
-	document.getElementById('draftConsole')
+	<DrafterApp data={heroData} />,
+	document.getElementById('drafterApp')
 );
