@@ -2,9 +2,41 @@ var React = require('react');
 
 module.exports = React.createClass({
 
+	getInitialState: function () {
+
+		return { selectedHeroes: [] };
+
+	},
+
+	renderSelectedHeroes: function () {
+
+		return this.state.selectedHeroes.map(function (hero) {
+
+			hero.formattedName = hero.name.replace('npc_dota_hero_', '');
+
+			return (
+
+				<li className={"draftConsole--" + hero.status}>
+
+					<div className="heroesGrid__avatar">
+
+						<img src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + hero.formattedName + '_hphover.png?v=3162717'} />
+
+					</div>
+
+					<label>{hero.status}</label>
+
+				</li>
+
+			);
+
+		});
+
+	},
+
 	render: function () {
 
-		var selectedHeroes = (<div></div>);
+		var selectedHeroes = this.renderSelectedHeroes();
 
 		return (
 
