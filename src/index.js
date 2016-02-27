@@ -182,9 +182,9 @@ var HeroesGrid = React.createClass({
 			hero.formattedName = hero.name.replace('npc_dota_hero_', '');
 
 			return (
-				<li className="hero-holder" key={hero.id}>
+				<li className="heroesGrid__hero" key={hero.id}>
 
-					<div className="hero-image-holder">
+					<div className="heroesGrid__avatar">
 
 						<img src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + hero.formattedName + '_hphover.png?v=3162717'} />
 
