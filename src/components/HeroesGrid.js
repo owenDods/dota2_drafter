@@ -2,14 +2,32 @@ var React = require('react');
 
 module.exports = React.createClass({
 
+	getInitialState: function () {
+
+		return { heroes: [] };
+
+	},
+
+	componentDidMount: function() {
+
+		this.setState({ heroes: this.props.data });
+
+	},
+
+	selectHero: function (heroId) {
+
+		console.log(this.state.heroes);
+
+	},
+
 	render: function () {
 
-		var heroHolders = this.props.data ? this.props.data.map(function(hero) {
+		var heroHolders = this.state.heroes.map(function(hero) {
 
 			hero.formattedName = hero.name.replace('npc_dota_hero_', '');
 
 			return (
-				<li className="heroesGrid__hero" key={hero.id}>
+				<li className="heroesGrid__hero" key={hero.id} onClick={this.selectHero.bind(this, hero.id)}>
 
 					<div className="heroesGrid__avatar">
 
@@ -21,7 +39,7 @@ module.exports = React.createClass({
 
 				</li>
 			);
-		}) : null;
+		}.bind(this));
 
 		return (
 
