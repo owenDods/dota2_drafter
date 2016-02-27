@@ -6,6 +6,8 @@ var reactify = require('reactify');
 var streamify = require('gulp-streamify');
 var notify = require('gulp-notify');
 var uglify = require('gulp-uglify');
+var browserSync = require('browser-sync').create();
+var sass = require('gulp-sass');
 
 var path = {
 	js: './src/index.js',
@@ -57,4 +59,31 @@ gulp.task('js', function () {
 
 });
 
-gulp.task('default', ['js']);
+gulp.task('browser-sync', function() {
+
+	browserSync.init({
+		server: {
+			baseDir: "./"
+		}
+	});
+
+});
+
+gulp.task('scss-compile', function () {
+
+	return gulp.src('./scss/app.scss')
+		.pipe(sass().on('error', sass.logError))
+		.pipe(gulp.dest('./build'))
+		.pipe(browserSync.stream());;
+
+});
+
+gulp.task('scss', ['scss-compile'], function () {
+
+	gulp.watch('./scss/**/*.scss', ['scss-compile']);
+
+});
+
+gulp.task('serve', ['js', 'scss', 'browser-sync']);
+
+gulp.task('default', ['serve']);
