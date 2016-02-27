@@ -173,7 +173,7 @@ var CommentForm = React.createClass({
 // 	document.getElementById('content')
 // );
 
-var HeroView = React.createClass({
+var HeroesGrid = React.createClass({
 
 	render: function () {
 
@@ -211,6 +211,6 @@ var HeroView = React.createClass({
 });
 
 ReactDOM.render(
-	<HeroView data={heroData} />,
-	document.getElementById('heroes-holder')
+	<HeroesGrid data={heroData} />,
+	document.getElementById('heroesGrid')
 );
