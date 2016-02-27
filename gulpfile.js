@@ -9,11 +9,7 @@ var uglify = require('gulp-uglify');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 
-var path = {
-	js: './src/index.js',
-	out: 'bundle.js',
-	dest: './build'
-};
+var config = require('./gulp.config')();
 
 function handleErrors() {
 
@@ -33,7 +29,7 @@ function handleErrors() {
 gulp.task('js', function () {
 
 	var watcher  = watchify(browserify({
-		entries: [path.js],
+		entries: [config.js.src],
 		transform: [reactify],
 		debug: true,
 		cache: {},
@@ -44,18 +40,20 @@ gulp.task('js', function () {
 	return watcher.on('update', function () {
 
 		watcher.bundle()
-			.pipe(source(path.out))
+			.pipe(source(config.js.out))
 			.pipe(streamify(uglify()))
-			.pipe(gulp.dest(path.dest));
+			.pipe(gulp.dest(config.js.dest))
+			.pipe(browserSync.stream());
 
 		console.log('Updated');
 
 	})
 	.bundle()
 	.on('error', handleErrors)
-	.pipe(source(path.out))
+	.pipe(source(config.js.out))
 	.pipe(streamify(uglify()))
-	.pipe(gulp.dest(path.dest));
+	.pipe(gulp.dest(config.js.dest))
+	.pipe(browserSync.stream());
 
 });
 
@@ -71,10 +69,10 @@ gulp.task('browser-sync', function() {
 
 gulp.task('scss-compile', function () {
 
-	return gulp.src('./scss/app.scss')
+	return gulp.src(config.scss.src)
 		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest('./build'))
-		.pipe(browserSync.stream());;
+		.pipe(gulp.dest(config.scss.dest))
+		.pipe(browserSync.stream());
 
 });
 
