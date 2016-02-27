@@ -10,9 +10,7 @@ module.exports = React.createClass({
 
 	selectHero: function () {
 
-		this.setState({ selected: this.state.selected ? !this.state.selected : true });
-
-		console.log(this);
+		this.setState({ selected: true });
 
 	},
 
@@ -24,7 +22,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<li className="heroesGrid__hero" onClick={this.selectHero}>
+			<li className={"heroesGrid__hero" + (this.state.selected ? ' selected' : '')} onClick={this.selectHero}>
 
 				<div className="heroesGrid__avatar">
 
