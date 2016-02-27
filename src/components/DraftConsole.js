@@ -8,6 +8,12 @@ module.exports = React.createClass({
 
 	},
 
+	componentDidMount: function() {
+
+		this.setState({ selectedHeroes: this.props.selectedHeroes });
+
+	},
+
 	renderSelectedHeroes: function () {
 
 		return this.state.selectedHeroes.map(function (hero) {
@@ -16,7 +22,7 @@ module.exports = React.createClass({
 
 			return (
 
-				<li className={"draftConsole--" + hero.status}>
+				<li className={"draftConsole--" + hero.status} key={hero.id}>
 
 					<div className="heroesGrid__avatar">
 
@@ -88,26 +94,6 @@ module.exports = React.createClass({
 			</div>
 
 		);
-
-		// <ul class="draft-console-selected-heroes">
-
-		// 	<% _.each(selectedHeroes, function(selectedHero) { %>
-
-		// 		<li class="draft-console-<%=selectedHero.status%>">
-
-		// 			<div class="hero-image-holder">
-
-		// 				<img src="http://cdn.dota2.com/apps/dota2/images/heroes/<%=selectedHero.formattedName%>_hphover.png?v=3162717" />
-
-		// 			</div>
-
-		// 			<label><%=selectedHero.status%></label>
-
-		// 		</li>
-
-		// 	<%});%>
-
-		// </ul>
 
 	}
 

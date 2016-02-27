@@ -2,7 +2,7 @@
 
 var React = require('react');
 var ReactDOM = require('react-dom');
-var heroData = require('../data/heroes.json');
+var heroData = require('../data/heroes.json').result.heroes;
 
 var CommentBox = React.createClass({
 
@@ -182,6 +182,6 @@ ReactDOM.render(
 );
 
 ReactDOM.render(
-	<DraftConsole />,
+	<DraftConsole selectedHeroes={heroData.slice(0, 3)} />,
 	document.getElementById('draftConsole')
 );

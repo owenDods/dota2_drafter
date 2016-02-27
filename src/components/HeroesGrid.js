@@ -4,7 +4,7 @@ module.exports = React.createClass({
 
 	render: function () {
 
-		var heroHolders = this.props.data ? this.props.data.result.heroes.map(function(hero) {
+		var heroHolders = this.props.data ? this.props.data.map(function(hero) {
 
 			hero.formattedName = hero.name.replace('npc_dota_hero_', '');
 
