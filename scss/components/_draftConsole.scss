@@ -1,0 +1,65 @@
+.draftConsole {
+
+	height: 150px;
+	width: 80%;
+	position: fixed;
+	bottom: 0;
+	left: 10%;
+	right: 10%;
+	background-color: #5C5E67;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	box-shadow: 0 0 5px 0 #000;
+
+	ul {
+		padding: 10px;
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	li {
+		width: 12%;
+		margin: 20px 0.25% 0;
+		height: 100px;
+		padding: 5px;
+		box-sizing: border-box;
+		border-radius: 5px;
+		justify-content: center;
+		position: relative;
+	}
+
+	label {
+		text-align: center;
+		text-transform: capitalize;
+		display: inline-block;
+		width: 100%;
+		line-height: 20px;
+		height: 20px;
+		padding: 5px 0;
+	}
+
+	&__teamLabel {
+		top: -30px;
+	}
+
+	&__placeholder {
+
+		position: absolute;
+		box-sizing: border-box;
+		width: 100%;
+		z-index: 0;
+
+		li {
+			position: relative;
+			box-shadow: inset 0 0 5px 0 #000;
+		}
+
+		label {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+		}
+
+	}
+
+}
