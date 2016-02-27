@@ -24,7 +24,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<li className="heroesGrid__hero" key={hero.id} onClick={this.selectHero}>
+			<li className="heroesGrid__hero" onClick={this.selectHero}>
 
 				<div className="heroesGrid__avatar">
 
