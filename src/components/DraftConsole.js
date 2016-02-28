@@ -24,11 +24,17 @@ module.exports = React.createClass({
 
 	},
 
-	renderSelectedHeroes: function () {
+	renderSelectedHeroes: function (finalSelection) {
 
 		return this.state.selectedHeroes.map(function (hero, i) {
 
 			var status = ((i === 0) || (i === 1) || (i === 4) || (i === 5)) ? 'ban' : 'pick';
+
+			if (finalSelection && (status === 'ban')) {
+
+				return;
+
+			}
 
 			return (
 
@@ -49,6 +55,7 @@ module.exports = React.createClass({
 	render: function () {
 
 		var selectedHeroes = this.renderSelectedHeroes();
+		var finalSelection = this.renderSelectedHeroes(true);
 
 		return (
 
@@ -94,6 +101,12 @@ module.exports = React.createClass({
 				<ul className="draftConsole__selectedHeroes">
 
 					{selectedHeroes}
+
+				</ul>
+
+				<ul className="draftConsole__finalSelection">
+
+					{finalSelection}
 
 				</ul>
 
