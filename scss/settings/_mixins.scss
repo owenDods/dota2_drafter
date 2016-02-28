@@ -1,3 +1,3 @@
-@mixin transitionAll() {
-	transition: all .3s ease-in-out;
+@mixin transitionAll($delay: 0s) {
+	transition: all .3s ease-in-out $delay;
 }

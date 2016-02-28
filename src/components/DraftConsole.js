@@ -1,4 +1,5 @@
 var React = require('react');
+var _ = require('underscore');
 
 var HeroAvatar = require('./HeroAvatar');
 
@@ -7,8 +8,19 @@ module.exports = React.createClass({
 	getInitialState: function () {
 
 		return {
-			selectedHeroes: this.props.data || []
+			selectedHeroes: this.props.data || [],
+			displayResult: false
 		};
+
+	},
+
+	componentDidUpdate: function () {
+
+		if (this.props.selectionComplete && !this.state.displayResult) {
+
+			_.defer(function () { this.setState({ displayResult: this.props.selectionComplete }) }.bind(this));
+
+		}
 
 	},
 
@@ -40,7 +52,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<div className={'draftConsole' + (this.props.selectionComplete ? ' draftConsole--selectionComplete' : '')}>
+			<div className={'draftConsole' + (this.state.displayResult ? ' draftConsole--selectionComplete' : '')}>
 
 				<ul className="draftConsole__placeholder">
 
