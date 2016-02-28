@@ -1,11 +1,30 @@
 .heroesGrid {
 
 	margin-bottom: 160px;
+	@include transitionAll();
 
 	ul {
 		margin: 20px;
 		display: flex;
 		flex-wrap: wrap;
+	}
+
+	&--selectionComplete {
+
+		margin-bottom: 0;
+		opacity: .1;
+
+		.heroCell:hover {
+
+			background-color: transparent;
+			cursor: default;
+
+			label {
+				cursor: default;
+			}
+
+		}
+
 	}
 
 }

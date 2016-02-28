@@ -26,7 +26,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<div className="heroesGrid">
+			<div className={'heroesGrid' + (this.props.selectionComplete ? ' heroesGrid--selectionComplete' : '')}>
 
 				<ul>
 

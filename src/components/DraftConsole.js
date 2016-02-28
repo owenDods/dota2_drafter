@@ -40,7 +40,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<div className="draftConsole">
+			<div className={'draftConsole' + (this.props.selectionComplete ? ' draftConsole--selectionComplete' : '')}>
 
 				<ul className="draftConsole__placeholder">
 

@@ -1,6 +1,6 @@
 .draftConsole {
 
-	height: 150px;
+	height: 140px;
 	width: 80%;
 	position: fixed;
 	bottom: 0;
@@ -10,6 +10,7 @@
 	border-top-left-radius: 5px;
 	border-top-right-radius: 5px;
 	box-shadow: 0 0 5px 0 #000;
+	@include transitionAll();
 
 	ul {
 		padding: 10px;
@@ -88,6 +89,13 @@
 
 	&--ban {
 		background-color: #7D3A3A;
+	}
+
+	&--selectionComplete {
+		bottom: 50%;
+		transform: translateY(50%);
+		border-bottom-left-radius: 5px;
+		border-bottom-right-radius: 5px;
 	}
 
 }

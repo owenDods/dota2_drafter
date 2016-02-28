@@ -9,7 +9,8 @@ module.exports = React.createClass({
 
 		return {
 			heroes: this.props.data || [],
-			selectedHeroes: []
+			selectedHeroes: [],
+			selectionComplete: false
 		};
 
 	},
@@ -23,6 +24,8 @@ module.exports = React.createClass({
 			selectedHeroes.push(hero);
 
 			this.setState({ selectedHeroes: selectedHeroes });
+
+			this.setState({ selectionComplete: (selectedHeroes.length === 8) });
 
 			return true;
 
@@ -40,8 +43,8 @@ module.exports = React.createClass({
 
 			<div>
 
-				<HeroesGrid data={this.state.heroes} onSelect={this.onHeroSelect} />
-				<DraftConsole data={this.state.selectedHeroes} />
+				<HeroesGrid data={this.state.heroes} onSelect={this.onHeroSelect} selectionComplete={this.state.selectionComplete} />
+				<DraftConsole data={this.state.selectedHeroes} selectionComplete={this.state.selectionComplete} />
 
 			</div>
 
