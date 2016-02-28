@@ -1,4 +1,5 @@
 var React = require('react');
+var _ = require('underscore');
 
 var HeroCell = require('./HeroCell');
 
@@ -13,8 +14,9 @@ module.exports = React.createClass({
 	render: function () {
 
 		var onSelect = this.props.onSelect;
+		var heroes = _.sortBy(this.state.heroes, 'localized_name');
 
-		var heroCells = this.state.heroes.map(function(hero) {
+		var heroCells = heroes.map(function(hero) {
 
 			return (
 
