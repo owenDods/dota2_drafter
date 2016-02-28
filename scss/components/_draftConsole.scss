@@ -1,6 +1,8 @@
+$draftConsole-height: 140px;
+
 .draftConsole {
 
-	height: 140px;
+	height: $draftConsole-height;
 	width: 80%;
 	position: fixed;
 	bottom: 0;
@@ -16,12 +18,16 @@
 		padding: 10px;
 		display: flex;
 		flex-wrap: wrap;
+		height: $draftConsole-height;
+		box-sizing: border-box;
+		@include positionCentre();
+		@include transitionAll(.3s);
 	}
 
 	li {
 		width: 12%;
 		margin: 20px 0.25% 0;
-		height: 100px;
+		height: calc(100% - 20px);
 		padding: 5px;
 		box-sizing: border-box;
 		border-radius: 5px;
@@ -92,11 +98,18 @@
 	}
 
 	&--selectionComplete {
+
 		bottom: 50%;
 		transform: translateY(50%);
 		border-bottom-left-radius: 5px;
 		border-bottom-right-radius: 5px;
 		height: 320px;
+
+		ul {
+			opacity: 0;
+			transform: scale(.7);
+		}
+
 	}
 
 }
