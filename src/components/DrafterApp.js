@@ -17,9 +17,20 @@ module.exports = React.createClass({
 	onHeroSelect: function (hero) {
 
 		var selectedHeroes = this.state.selectedHeroes;
-		selectedHeroes.push(hero);
 
-		this.setState({ selectedHeroes: selectedHeroes });
+		if (selectedHeroes.length < 8) {
+
+			selectedHeroes.push(hero);
+
+			this.setState({ selectedHeroes: selectedHeroes });
+
+			return true;
+
+		} else {
+
+			return false;
+
+		}
 
 	},
 

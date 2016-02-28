@@ -14,8 +14,13 @@ module.exports = React.createClass({
 
 		if (!this.state.selected) {
 
-			this.selectHero();
-			this.props.onSelect(this.state);
+			var selectSucceeded = this.props.onSelect(this.state);
+
+			if (selectSucceeded) {
+
+				this.selectHero();
+
+			}
 
 		}
 
