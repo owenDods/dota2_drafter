@@ -18,7 +18,6 @@ $draftConsole-height: 140px;
 		padding: 10px;
 		display: flex;
 		flex-wrap: wrap;
-		height: $draftConsole-height;
 		box-sizing: border-box;
 		@include positionCentre();
 	}
@@ -26,7 +25,6 @@ $draftConsole-height: 140px;
 	li {
 		width: 12%;
 		margin: 20px 0.25% 0;
-		height: calc(100% - 20px);
 		padding: 5px;
 		box-sizing: border-box;
 		border-radius: 5px;
@@ -54,9 +52,11 @@ $draftConsole-height: 140px;
 		box-sizing: border-box;
 		width: 100%;
 		z-index: 0;
+		height: $draftConsole-height;
 		@include transitionAll(.3s);
 
 		li {
+			height: calc(100% - 20px);
 			position: relative;
 			box-shadow: inset 0 0 5px 0 #000;
 		}
@@ -71,9 +71,11 @@ $draftConsole-height: 140px;
 
 	&__selectedHeroes {
 
+		height: $draftConsole-height;
 		@include transitionAll(.3s);
 
 		li {
+			height: calc(100% - 20px);
 			box-shadow: inset 0 0 3px 0 #000;
 		}
 
@@ -96,8 +98,13 @@ $draftConsole-height: 140px;
 		opacity: 0;
 		transform: scale(.7);
 		@include transitionAll(.6s);
+		height: 280px;
+		justify-content: center;
 
 		li {
+			height: 100%;
+			width: calc(25% - 20px);
+			margin: 0 10px;
 			box-shadow: inset 0 0 3px 0 #000;
 		}
 

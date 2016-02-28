@@ -24,38 +24,66 @@ module.exports = React.createClass({
 
 	},
 
+	getStatus: function (i) {
+
+		return ((i === 0) || (i === 1) || (i === 4) || (i === 5)) ? 'ban' : 'pick';
+
+	},
+
+	pickSort: function (hero, i) {
+
+		return i % 2;
+
+	},
+
+	removeBans: function (hero, i) {
+
+		var status = this.getStatus(i);
+
+		return status === 'pick';
+
+	},
+
+	processFinalSelection: function (selectedHeroes) {
+
+		selectedHeroes = _.filter(selectedHeroes, this.removeBans);
+
+		selectedHeroes = _.sortBy(selectedHeroes, this.pickSort);
+
+		return selectedHeroes;
+
+	},
+
 	renderSelectedHeroes: function (finalSelection) {
 
-		return this.state.selectedHeroes.map(function (hero, i) {
+		var selectedHeroes = this.state.selectedHeroes;
 
-			var status = ((i === 0) || (i === 1) || (i === 4) || (i === 5)) ? 'ban' : 'pick';
+		selectedHeroes = finalSelection ? this.processFinalSelection(selectedHeroes) : selectedHeroes;
 
-			if (finalSelection && (status === 'ban')) {
+		return selectedHeroes.map(function (hero, i) {
 
-				return;
-
-			}
+			var status = this.getStatus(i);
 
 			return (
 
-				<li className={"draftConsole--" + status} key={hero.id}>
+				<li className={ finalSelection ? '' : 'draftConsole--' + status} key={hero.id}>
 
 					<HeroAvatar name={hero.name} />
 
-					<label>{status}</label>
+					<label>{finalSelection ? hero.localized_name : status}</label>
 
 				</li>
 
 			);
 
-		});
+		}.bind(this));
 
 	},
 
 	render: function () {
 
 		var selectedHeroes = this.renderSelectedHeroes();
-		var finalSelection = this.renderSelectedHeroes(true);
+		var finalSelection = this.state.displayResult ? this.renderSelectedHeroes(true) : undefined;
 
 		return (
 
