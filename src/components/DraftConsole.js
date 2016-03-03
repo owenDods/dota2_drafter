@@ -145,9 +145,9 @@ module.exports = React.createClass({
 
 					<p>VS</p>
 
-					{finalSelection}
-
 					<button onClick={this.onClick}>Reset</button>
+
+					{finalSelection}
 
 				</ul>
 

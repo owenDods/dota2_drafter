@@ -1,8 +1,9 @@
 body {
 	margin: 0;
-	background-color: #212325;
-	color: #F2F2F2;
+	background-color: $_dark-grey;
+	color: $_off-white;
 	font-family: 'Droid Sans', sans-serif;
+	font-size: $_font-size;
 }
 
 ul {
@@ -17,4 +18,31 @@ label {
 
 p {
 	margin: 0;
+}
+
+button {
+
+	line-height: $_line-height-large;
+	border-radius: $_radius;
+	border: none;
+	padding: 0 $_inner-spacing;
+	font-size: $_font-size;
+	cursor: pointer;
+	color: $_off-white;
+	background-color: $_dark-semi-opaque-background;
+
+	&:hover {
+		background-color: $_dark-semi-opaque-background-hover;
+		@include standardShadow($colour: $_shadow-colour-light);
+	}
+
+	&:active {
+		color: $_dark-grey;
+		background-color: $_light-semi-opaque-background-active;
+	}
+
+	&:focus {
+		outline: none;
+	}
+
 }

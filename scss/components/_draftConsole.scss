@@ -116,7 +116,7 @@ $draftConsole-team-label-height-large: $_line-height-large + $_inner-spacing;
 
 			label {
 				padding-top: $_inner-spacing;
-				background-color: rgba(0, 0, 0, 0.5);
+				background-color: $_dark-semi-opaque-background;
 			}
 
 		}
@@ -127,6 +127,13 @@ $draftConsole-team-label-height-large: $_line-height-large + $_inner-spacing;
 			text-align: center;
 			cursor: default;
 			font-size: 30px;
+		}
+
+		button {
+			position: absolute;
+			left: 50%;
+			bottom: -($_line-height-large + $_margin);
+			transform: translateX(-50%);
 		}
 
 		& > label {

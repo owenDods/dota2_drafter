@@ -17,15 +17,15 @@
 	background-position: 50% 50%;
 }
 
-@mixin standardShadow($size: $_shadow-size, $inset: false) {
+@mixin standardShadow($size: $_shadow-size, $inset: false, $colour: $_shadow-colour) {
 
 	@if $inset {
 
-		box-shadow: inset 0 0 $size 0 $_shadow-colour;
+		box-shadow: inset 0 0 $size 0 $colour;
 
 	} @else {
 
-		box-shadow: 0 0 $size 0 $_shadow-colour;
+		box-shadow: 0 0 $size 0 $colour;
 
 	}
 
