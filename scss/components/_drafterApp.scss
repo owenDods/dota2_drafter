@@ -13,14 +13,10 @@
 		@include transitionAll(.6s);
 	}
 
-	.heroesGrid,
+	.heroesGrid:not(.heroesGrid--selectionComplete),
 	.draftConsole {
 		opacity: 0;
 		visibility: hidden;
-	}
-
-	.heroesGrid {
-		@include transitionAll();
 	}
 
 	.draftConsole {
@@ -35,7 +31,7 @@
 			transition-delay: 0s;
 		}
 
-		.heroesGrid,
+		.heroesGrid:not(.heroesGrid--selectionComplete),
 		.draftConsole {
 			opacity: 1;
 			visibility: visible;
