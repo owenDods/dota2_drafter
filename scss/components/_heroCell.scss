@@ -1,10 +1,10 @@
 .heroCell {
 
 	width: 10%;
-	padding: $_standard-inner-margin;
+	padding: $_inner-margin;
 	box-sizing: border-box;
 	cursor: pointer;
-	border-radius: $_standard-radius;
+	border-radius: $_radius;
 	transition: all 0.2s;
 	justify-content: center;
 
@@ -25,7 +25,7 @@
 
 	label {
 		width: 100%;
-		padding-top: $_standard-inner-spacing;
+		padding-top: $_inner-spacing;
 		text-align: center;
 		display: inline-block;
 		cursor: pointer;

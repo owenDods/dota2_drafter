@@ -134,6 +134,10 @@ module.exports = React.createClass({
 
 				<ul className="draftConsole__finalSelection">
 
+					<label>Team 1</label>
+
+					<label>Team 2</label>
+
 					<p>VS</p>
 
 					{finalSelection}

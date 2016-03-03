@@ -3,7 +3,7 @@
 	width: 100%;
 	min-height: 50px;
 	text-align: center;
-	border-radius: $_standard-radius;
+	border-radius: $_radius;
 	@include standardShadow(3px, true);
 	@include backgroundImageCover();
 }

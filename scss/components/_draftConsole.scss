@@ -1,5 +1,6 @@
 $draftConsole-height: $_footer-height;
-$draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spacing;
+$draftConsole-team-label-height: $_line-height + $_inner-spacing;
+$draftConsole-team-label-height-large: $_line-height-large + $_inner-spacing;
 
 .draftConsole {
 
@@ -10,13 +11,13 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 	left: 10%;
 	right: 10%;
 	background-color: #5C5E67;
-	border-top-left-radius: $_standard-radius;
-	border-top-right-radius: $_standard-radius;
+	border-top-left-radius: $_radius;
+	border-top-right-radius: $_radius;
 	@include standardShadow();
 	@include transitionAll(.3s);
 
 	ul {
-		padding: $_standard-inner-margin;
+		padding: $_inner-margin;
 		display: flex;
 		flex-wrap: wrap;
 		box-sizing: border-box;
@@ -24,12 +25,12 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 	}
 
 	li {
-		width: calc(12.5% - (#{$_standard-inner-spacing} * 2));
+		width: calc(12.5% - (#{$_inner-spacing} * 2));
 		height: calc(100% - #{$draftConsole-team-label-height});
-		margin: $draftConsole-team-label-height $_standard-inner-spacing 0;
-		padding: $_standard-inner-spacing;
+		margin: $draftConsole-team-label-height $_inner-spacing 0;
+		padding: $_inner-spacing;
 		box-sizing: border-box;
-		border-radius: $_standard-radius;
+		border-radius: $_radius;
 		justify-content: center;
 		position: relative;
 	}
@@ -39,8 +40,7 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 		text-transform: capitalize;
 		display: inline-block;
 		width: 100%;
-		height: $_standard-line-height;
-		padding: 0 0 $_standard-inner-spacing;
+		padding: 0 0 $_inner-spacing;
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -99,9 +99,9 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 
 		li {
 
-			height: 100%;
 			width: calc(25% - 25px);
-			margin: 0 $_standard-inner-margin 0 0;
+			height: calc(100% - #{$draftConsole-team-label-height-large});
+			margin: $draftConsole-team-label-height-large $_inner-margin 0 0;
 			padding: 0;
 			overflow: hidden;
 			@include standardShadow(3px, true);
@@ -114,11 +114,11 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 				margin-right: 0;
 			}
 
-		}
+			label {
+				padding-top: $_inner-spacing;
+				background-color: rgba(0, 0, 0, 0.5);
+			}
 
-		label {
-			padding-top: $_standard-inner-spacing;
-			background-color: rgba(0, 0, 0, 0.5);
 		}
 
 		p {
@@ -127,6 +127,21 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 			text-align: center;
 			cursor: default;
 			font-size: 30px;
+		}
+
+		& > label {
+
+			width: 50%;
+			top: $_inner-margin;
+			left: 0;
+			bottom: auto;
+			font-size: 30px;
+			line-height: $_line-height-large;
+
+			& + label {
+				left: 50%;
+			}
+
 		}
 
 		.heroAvatar {
@@ -150,8 +165,8 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 
 		bottom: 50%;
 		transform: translateY(50%);
-		border-bottom-left-radius: $_standard-radius;
-		border-bottom-right-radius: $_standard-radius;
+		border-bottom-left-radius: $_radius;
+		border-bottom-right-radius: $_radius;
 		height: $draftConsole-height * 2;
 
 		ul:not(.draftConsole__finalSelection) {

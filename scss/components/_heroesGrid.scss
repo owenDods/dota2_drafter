@@ -1,7 +1,7 @@
 .heroesGrid {
 
 	margin-bottom: $_footer-height;
-	padding: $_standard-margin;
+	padding: $_margin;
 	@include transitionAll();
 
 	ul {
