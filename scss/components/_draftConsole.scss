@@ -40,7 +40,7 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 		display: inline-block;
 		width: 100%;
 		height: $_standard-line-height;
-		padding: $_standard-inner-spacing 0;
+		padding: 0 0 $_standard-inner-spacing;
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -106,7 +106,7 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 			overflow: hidden;
 			@include standardShadow(3px, true);
 
-			&:nth-child(2) {
+			&:nth-of-type(2) {
 				margin-right: 80px;
 			}
 
@@ -117,7 +117,16 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 		}
 
 		label {
+			padding-top: $_standard-inner-spacing;
 			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+		p {
+			@include positionCentre();
+			line-height: $draftConsole-height * 2;
+			text-align: center;
+			cursor: default;
+			font-size: 30px;
 		}
 
 		.heroAvatar {
