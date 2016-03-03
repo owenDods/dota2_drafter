@@ -14,11 +14,11 @@ module.exports = React.createClass({
 
 			return (
 
-				<HeroCell hero={hero} key={hero.id} onSelect={onSelect} />
+				<HeroCell hero={hero} key={hero.id} onSelect={onSelect} selectionComplete={this.props.selectionComplete} />
 
 			);
 
-		});
+		}.bind(this));
 
 		return (
 

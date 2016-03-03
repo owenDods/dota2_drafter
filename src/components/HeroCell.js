@@ -26,6 +26,16 @@ module.exports = React.createClass({
 
 	},
 
+	componentDidUpdate: function (prevProps) {
+
+		if (prevProps.selectionComplete && !this.props.selectionComplete) {
+
+			this.setState({ selected: false });
+
+		}
+
+	},
+
 	selectHero: function () {
 
 		this.setState({ selected: true });
