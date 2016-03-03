@@ -13,7 +13,7 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 	border-top-left-radius: $_standard-radius;
 	border-top-right-radius: $_standard-radius;
 	@include standardShadow();
-	@include transitionAll();
+	@include transitionAll(.3s);
 
 	ul {
 		padding: $_standard-inner-margin;
@@ -57,7 +57,7 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 		width: 100%;
 		z-index: 0;
 		height: 100%;
-		@include transitionAll(.3s);
+		@include transitionAll();
 
 		li {
 			position: relative;
@@ -69,7 +69,7 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 	&__selectedHeroes {
 
 		height: $draftConsole-height;
-		@include transitionAll(.3s);
+		@include transitionAll();
 
 		li {
 			@include standardShadow(3px, true);
@@ -118,9 +118,9 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 
 		bottom: 50%;
 		transform: translateY(50%);
-		border-bottom-left-radius: 5px;
-		border-bottom-right-radius: 5px;
-		height: 320px;
+		border-bottom-left-radius: $_standard-radius;
+		border-bottom-right-radius: $_standard-radius;
+		height: $draftConsole-height * 2;
 
 		ul:not(.draftConsole__finalSelection) {
 			opacity: 0;
