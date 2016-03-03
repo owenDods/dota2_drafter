@@ -18,11 +18,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<div className="heroAvatar">
-
-				<img src={'http://cdn.dota2.com/apps/dota2/images/heroes/' + this.state.heroName + '_hphover.png?v=3162717'} />
-
-			</div>
+			<div className="heroAvatar" style={{backgroundImage: 'url(http://cdn.dota2.com/apps/dota2/images/heroes/' + this.state.heroName + '_hphover.png?v=3162717)'}}></div>
 
 		);
 

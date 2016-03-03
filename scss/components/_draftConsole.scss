@@ -12,7 +12,7 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 	background-color: #5C5E67;
 	border-top-left-radius: $_standard-radius;
 	border-top-right-radius: $_standard-radius;
-	box-shadow: 0 0 5px 0 #000;
+	@include standardShadow();
 	@include transitionAll();
 
 	ul {
@@ -61,7 +61,7 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 
 		li {
 			position: relative;
-			box-shadow: inset 0 0 5px 0 #000;
+			@include standardShadow($inset: true);
 		}
 
 	}
@@ -72,12 +72,12 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 		@include transitionAll(.3s);
 
 		li {
-			box-shadow: inset 0 0 3px 0 #000;
+			@include standardShadow(3px, true);
 		}
 
 		.heroAvatar {
 
-			height: 65px;
+			height: calc(100% - #{$draftConsole-team-label-height});
 
 			img {
 				max-height: 100%;
@@ -101,7 +101,7 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 			height: calc(100% - 20px);
 			width: calc(25% - 20px);
 			margin: 10px;
-			box-shadow: inset 0 0 3px 0 #000;
+			@include standardShadow(3px, true);
 		}
 
 	}
