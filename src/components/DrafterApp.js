@@ -37,6 +37,17 @@ module.exports = React.createClass({
 
 	},
 
+	onReset: function () {
+
+		console.log(this);
+
+		this.setState({
+			selectedHeroes: [],
+			selectionComplete: false
+		});
+
+	},
+
 	render: function () {
 
 		return (
@@ -44,7 +55,7 @@ module.exports = React.createClass({
 			<div>
 
 				<HeroesGrid data={this.state.heroes} onSelect={this.onHeroSelect} selectionComplete={this.state.selectionComplete} />
-				<DraftConsole data={this.state.selectedHeroes} selectionComplete={this.state.selectionComplete} />
+				<DraftConsole data={this.state.selectedHeroes} selectionComplete={this.state.selectionComplete} onReset={this.onReset} />
 
 			</div>
 

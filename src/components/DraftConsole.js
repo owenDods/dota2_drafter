@@ -8,7 +8,6 @@ module.exports = React.createClass({
 	getInitialState: function () {
 
 		return {
-			selectedHeroes: this.props.data || [],
 			displayResult: false
 		};
 
@@ -21,6 +20,12 @@ module.exports = React.createClass({
 			_.defer(function () { this.setState({ displayResult: this.props.selectionComplete }) }.bind(this));
 
 		}
+
+	},
+
+	onClick: function () {
+
+		this.props.onReset();
 
 	},
 
@@ -56,7 +61,7 @@ module.exports = React.createClass({
 
 	renderSelectedHeroes: function (finalSelection) {
 
-		var selectedHeroes = this.state.selectedHeroes;
+		var selectedHeroes = this.props.data;
 
 		selectedHeroes = finalSelection ? this.processFinalSelection(selectedHeroes) : selectedHeroes;
 
@@ -141,6 +146,8 @@ module.exports = React.createClass({
 					<p>VS</p>
 
 					{finalSelection}
+
+					<button onClick={this.onClick}>Reset</button>
 
 				</ul>
 

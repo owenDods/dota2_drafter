@@ -5,22 +5,16 @@ var HeroCell = require('./HeroCell');
 
 module.exports = React.createClass({
 
-	getInitialState: function () {
-
-		return { heroes: this.props.data || [] };
-
-	},
-
 	render: function () {
 
 		var onSelect = this.props.onSelect;
-		var heroes = _.sortBy(this.state.heroes, 'localized_name');
+		var heroes = _.sortBy(this.props.data, 'localized_name');
 
 		var heroCells = heroes.map(function(hero) {
 
 			return (
 
-				<HeroCell hero={hero} key={hero.id} onSelect={onSelect}/>
+				<HeroCell hero={hero} key={hero.id} onSelect={onSelect} />
 
 			);
 

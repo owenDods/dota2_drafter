@@ -6,7 +6,7 @@ module.exports = React.createClass({
 
 	getInitialState: function () {
 
-		return this.props.hero || {};
+		return { selected: false };
 
 	},
 
@@ -14,7 +14,7 @@ module.exports = React.createClass({
 
 		if (!this.state.selected) {
 
-			var selectSucceeded = this.props.onSelect(this.state);
+			var selectSucceeded = this.props.onSelect(this.props.hero);
 
 			if (selectSucceeded) {
 
@@ -34,11 +34,11 @@ module.exports = React.createClass({
 
 	render: function () {
 
-		var hero = this.state;
+		var hero = this.props.hero;
 
 		return (
 
-			<li className={"heroCell" + (hero.selected ? ' selected' : '')} onClick={this.onClick}>
+			<li className={"heroCell" + (this.state.selected ? ' selected' : '')} onClick={this.onClick}>
 
 				<HeroAvatar name={hero.name} />
 
