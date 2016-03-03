@@ -23,9 +23,10 @@ module.exports = React.createClass({
 
 			selectedHeroes.push(hero);
 
-			this.setState({ selectedHeroes: selectedHeroes });
-
-			this.setState({ selectionComplete: (selectedHeroes.length === 8) });
+			this.setState({
+				selectedHeroes: selectedHeroes,
+				selectionComplete: (selectedHeroes.length === 8)
+			});
 
 			return true;
 
