@@ -68,7 +68,7 @@ module.exports = React.createClass({
 
 				<li className={ finalSelection ? '' : 'draftConsole--' + status} key={hero.id}>
 
-					<HeroAvatar name={hero.name} />
+					<HeroAvatar name={hero.name} vertical={finalSelection} />
 
 					<label>{finalSelection ? hero.localized_name : status}</label>
 

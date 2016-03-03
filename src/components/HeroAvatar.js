@@ -4,7 +4,10 @@ module.exports = React.createClass({
 
 	getInitialState: function () {
 
-		return { heroName: this.formatName() };
+		return {
+			heroName: this.formatName(),
+			vertical: this.props.vertical
+		};
 
 	},
 
@@ -16,9 +19,12 @@ module.exports = React.createClass({
 
 	render: function () {
 
+		var orientation = this.state.vertical ? '_vert.jpg' : '_full.png';
+		var imageUrl = 'url(http://cdn.dota2.com/apps/dota2/images/heroes/' + this.state.heroName + orientation + ')';
+
 		return (
 
-			<div className="heroAvatar" style={{backgroundImage: 'url(http://cdn.dota2.com/apps/dota2/images/heroes/' + this.state.heroName + '_full.png)'}}></div>
+			<div className="heroAvatar" style={{ backgroundImage: imageUrl }}></div>
 
 		);
 
