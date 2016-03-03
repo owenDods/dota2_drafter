@@ -137,6 +137,8 @@ $draftConsole-team-label-height-large: $_line-height-large + $_inner-spacing;
 			bottom: auto;
 			font-size: 30px;
 			line-height: $_line-height-large;
+			text-transform: uppercase;
+			letter-spacing: 5px;
 
 			& + label {
 				left: 50%;
