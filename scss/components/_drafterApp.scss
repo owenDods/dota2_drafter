@@ -1,0 +1,41 @@
+.drafterApp {
+
+	.teamManager {
+		@include transitionAll(.6s);
+	}
+
+	.heroesGrid,
+	.draftConsole {
+		opacity: 0;
+		visibilty: hidden;
+	}
+
+	.heroesGrid {
+		@include transitionAll();
+	}
+
+	.draftConsole {
+		@include transitionAll(.3s);
+	}
+
+	&--draftingActive {
+
+		.teamManager {
+			opacity: 0;
+			visibiliy: hidden;
+			transition-delay: 0s;
+		}
+
+		.heroesGrid,
+		.draftConsole {
+			opacity: 1;
+			visibility: visible;
+		}
+
+		.heroesGrid {
+			transition-delay: .6s;
+		}
+
+	}
+
+}

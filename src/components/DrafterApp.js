@@ -1,5 +1,6 @@
 var React = require('react');
 
+var TeamManager = require('./TeamManager');
 var HeroesGrid = require('./HeroesGrid');
 var DraftConsole = require('./DraftConsole');
 
@@ -9,6 +10,7 @@ module.exports = React.createClass({
 
 		return {
 			heroes: this.props.data || [],
+			draftingActive: false,
 			selectedHeroes: [],
 			selectionComplete: false
 		};
@@ -51,9 +53,12 @@ module.exports = React.createClass({
 
 		return (
 
-			<div>
+			<div className="drafterApp">
+
+				<TeamManager />
 
 				<HeroesGrid data={this.state.heroes} onSelect={this.onHeroSelect} selectionComplete={this.state.selectionComplete} />
+
 				<DraftConsole data={this.state.selectedHeroes} selectionComplete={this.state.selectionComplete} onReset={this.onReset} />
 
 			</div>
