@@ -40,7 +40,7 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 		display: inline-block;
 		width: 100%;
 		height: $_standard-line-height;
-		padding: 0 0 $_standard-inner-spacing;
+		padding: $_standard-inner-spacing 0;
 		position: absolute;
 		bottom: 0;
 		left: 0;
@@ -98,10 +98,33 @@ $draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spaci
 		justify-content: center;
 
 		li {
-			height: calc(100% - 20px);
-			width: calc(25% - 20px);
-			margin: 10px;
+
+			height: 100%;
+			width: calc(25% - 25px);
+			margin: 0 $_standard-inner-margin 0 0;
+			padding: 0;
+			overflow: hidden;
 			@include standardShadow(3px, true);
+
+			&:nth-child(2) {
+				margin-right: 80px;
+			}
+
+			&:last-child {
+				margin-right: 0;
+			}
+
+		}
+
+		label {
+			background-color: rgba(0, 0, 0, 0.5);
+		}
+
+		.heroAvatar {
+
+			width: 100%;
+			height: 100%;
+
 		}
 
 	}
