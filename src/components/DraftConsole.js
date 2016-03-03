@@ -15,7 +15,7 @@ module.exports = React.createClass({
 
 	componentDidUpdate: function () {
 
-		if (this.props.selectionComplete && !this.state.displayResult) {
+		if ((this.props.selectionComplete && !this.state.displayResult) || (!this.props.selectionComplete && this.state.displayResult)) {
 
 			_.defer(function () { this.setState({ displayResult: this.props.selectionComplete }) }.bind(this));
 

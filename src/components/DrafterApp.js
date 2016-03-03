@@ -39,8 +39,6 @@ module.exports = React.createClass({
 
 	onReset: function () {
 
-		console.log(this);
-
 		this.setState({
 			selectedHeroes: [],
 			selectionComplete: false
