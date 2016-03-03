@@ -1,4 +1,5 @@
 $draftConsole-height: $_footer-height;
+$draftConsole-team-label-height: $_standard-line-height + $_standard-inner-spacing;
 
 .draftConsole {
 
@@ -15,7 +16,7 @@ $draftConsole-height: $_footer-height;
 	@include transitionAll();
 
 	ul {
-		padding: 10px;
+		padding: $_standard-inner-margin;
 		display: flex;
 		flex-wrap: wrap;
 		box-sizing: border-box;
@@ -23,11 +24,12 @@ $draftConsole-height: $_footer-height;
 	}
 
 	li {
-		width: 12%;
-		margin: 20px 0.25% 0;
-		padding: 5px;
+		width: calc(12.5% - (#{$_standard-inner-spacing} * 2));
+		height: calc(100% - #{$draftConsole-team-label-height});
+		margin: $draftConsole-team-label-height $_standard-inner-spacing 0;
+		padding: $_standard-inner-spacing;
 		box-sizing: border-box;
-		border-radius: 5px;
+		border-radius: $_standard-radius;
 		justify-content: center;
 		position: relative;
 	}
@@ -37,15 +39,15 @@ $draftConsole-height: $_footer-height;
 		text-transform: capitalize;
 		display: inline-block;
 		width: 100%;
-		height: 20px;
-		padding: 5px 0;
+		height: $_standard-line-height;
+		padding: 0 0 $_standard-inner-spacing;
 		position: absolute;
 		bottom: 0;
 		left: 0;
 	}
 
 	&__teamLabel {
-		top: -30px;
+		top: -$draftConsole-team-label-height;
 	}
 
 	&__placeholder {
@@ -58,7 +60,6 @@ $draftConsole-height: $_footer-height;
 		@include transitionAll(.3s);
 
 		li {
-			height: calc(100% - 20px);
 			position: relative;
 			box-shadow: inset 0 0 5px 0 #000;
 		}
@@ -71,7 +72,6 @@ $draftConsole-height: $_footer-height;
 		@include transitionAll(.3s);
 
 		li {
-			height: calc(100% - 20px);
 			box-shadow: inset 0 0 3px 0 #000;
 		}
 
