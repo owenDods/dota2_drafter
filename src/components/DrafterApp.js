@@ -53,7 +53,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<div className="drafterApp">
+			<div className={'drafterApp' + (this.state.draftingActive ? ' drafterApp--draftingActive' : '')}>
 
 				<TeamManager />
 

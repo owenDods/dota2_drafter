@@ -1,4 +1,13 @@
+#drafterApp {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
 .drafterApp {
+
+	overflow: auto;
 
 	.teamManager {
 		@include transitionAll(.6s);
@@ -7,7 +16,7 @@
 	.heroesGrid,
 	.draftConsole {
 		opacity: 0;
-		visibilty: hidden;
+		visibility: hidden;
 	}
 
 	.heroesGrid {
@@ -22,7 +31,7 @@
 
 		.teamManager {
 			opacity: 0;
-			visibiliy: hidden;
+			visibility: hidden;
 			transition-delay: 0s;
 		}
 
