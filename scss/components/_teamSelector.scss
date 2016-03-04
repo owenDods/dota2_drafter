@@ -18,11 +18,16 @@
 		top: -($_line-height + $_inner-margin);
 	}
 
-	select {
+	select,
+	input {
 		width: 100%;
 		margin: 0 0 $_inner-spacing;
 		line-height: $_line-height-extra-large;
 		height: $_line-height-extra-large;
+	}
+
+	p {
+		margin-bottom: $_inner-spacing;
 	}
 
 }

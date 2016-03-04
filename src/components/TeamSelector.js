@@ -65,6 +65,10 @@ module.exports = React.createClass({
 
 				</select>
 
+				<p>OR</p>
+
+				<input type="text" placeholder="Create a new team" />
+
 			</div>
 
 		);

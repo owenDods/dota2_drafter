@@ -16,9 +16,17 @@ label {
 	line-height: $_line-height;
 }
 
-h1,
+h1 {
+	margin: 0;
+	padding: $_inner-margin;
+	font-size: $_font-size-extra-large;
+	line-height: $_line-height-extra-large;
+	cursor: default;
+}
+
 p {
 	margin: 0;
+	line-height: $_line-height;
 }
 
 button {
@@ -58,4 +66,17 @@ select {
 	background-repeat: no-repeat;
 	background-position: right $_inner-spacing center;
 	cursor: pointer;
+	color: $_dark-grey;
+	font-size: $_font-size-small;
+}
+
+input {
+	height: $_line-height;
+	line-height: $_line-height;
+	padding: 0 $_inner-spacing;
+	border: none;
+	border-radius: $_radius;
+	box-sizing: border-box;
+	color: $_dark-grey;
+	font-size: $_font-size-small;
 }
