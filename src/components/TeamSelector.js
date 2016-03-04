@@ -1,12 +1,16 @@
 var React = require('react');
-
 var request = require('ajax-request');
+
+var InputSubmit = require('./InputSubmit');
 
 module.exports = React.createClass({
 
 	getInitialState: function () {
 
-		return { data: [] };
+		return {
+			teams: [],
+			selectedTeam: null
+		};
 
 	},
 
@@ -23,7 +27,7 @@ module.exports = React.createClass({
 
 			} else {
 
-				this.setState({ data: data });
+				this.setState({ teams: data });
 
 			}
 
@@ -39,7 +43,7 @@ module.exports = React.createClass({
 
 	render: function () {
 
-		var selectOptions = this.state.data.map(function (team) {
+		var selectOptions = this.state.teams.map(function (team) {
 
 			var teamId = 'team_' + team.id;
 
@@ -55,8 +59,6 @@ module.exports = React.createClass({
 
 			<div className="teamSelector">
 
-				<label>{this.props.teamLabel}</label>
-
 				<select>
 
 					<option value="-1">Choose a team</option>
@@ -67,7 +69,11 @@ module.exports = React.createClass({
 
 				<p>OR</p>
 
-				<input type="text" placeholder="Create a new team" />
+				<InputSubmit placeholder="Create a new team" buttonText="Create" />
+
+				<label>{this.props.teamLabel}</label>
+
+				<p>{this.state.selectedTeam}</p>
 
 			</div>
 
