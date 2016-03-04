@@ -7,6 +7,8 @@
 	right: 10%;
 	bottom: 50%;
 	transform: translateY(50%);
+	background-color: $_grey;
+	border-radius: $_radius;
 
 	& > label {
 		width: 100%;
@@ -15,6 +17,11 @@
 	    top: -($_line-height-large + $_margin);
 	    font-size: $_font-size-large;
 	    line-height: $_line-height-large;
+	}
+
+	.teamSelector {
+		width: 50%;
+		float: left;
 	}
 
 }

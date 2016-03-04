@@ -1,6 +1,8 @@
 .teamSelector {
 
 	width: 100%;
+	padding: $_inner-margin;
+	box-sizing: border-box;
 
 	label {
 		width: 100%;
@@ -10,7 +12,7 @@
 
 	select {
 		width: 80%;
-		margin: $_margin 10%;
+		margin: $_inner-spacing 10% 0;
 		line-height: $_line-height-extra-large;
 		height: $_line-height-extra-large;
 	}
