@@ -47,3 +47,15 @@ button {
 	}
 
 }
+
+select {
+	height: $_line-height;
+	line-height: $_line-height;
+	-webkit-appearance: none;
+	padding: 0 ($_inner-spacing * 2 + $_line-height) 0 $_inner-spacing;
+	background-image: url('/img/circle-down.svg');
+	background-size: $_line-height;
+	background-repeat: no-repeat;
+	background-position: right $_inner-spacing center;
+	cursor: pointer;
+}
