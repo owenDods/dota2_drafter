@@ -1,7 +1,5 @@
 var React = require('react');
 
-var TeamSelector = require('./TeamSelector');
-
 module.exports = React.createClass({
 
 	getInitialState: function () {
@@ -14,13 +12,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<div className="teamManager">
-
-				<TeamSelector />
-
-				<TeamSelector />
-
-			</div>
+			<div className="teamSelector"></div>
 
 		);
 

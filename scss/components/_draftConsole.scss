@@ -52,12 +52,10 @@ $draftConsole-team-label-height-large: $_line-height-large + $_inner-spacing;
 
 	&__placeholder {
 
-		position: absolute;
-		box-sizing: border-box;
 		width: 100%;
 		z-index: 0;
 		height: 100%;
-		@include transitionAll(.6s);
+		transition: opacity .3s ease-in-out .6s, transform .3s ease-in-out .6s;
 
 		li {
 			position: relative;
