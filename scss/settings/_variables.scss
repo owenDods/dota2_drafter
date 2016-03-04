@@ -23,9 +23,11 @@ $_off-white: #F2F2F2;
 $_grey: #5C5E67;
 $_dark-grey: #212325;
 
-$_dark-semi-opaque-background: rgba(0, 0, 0, 0.5);
-$_dark-semi-opaque-background-hover: rgba(0, 0, 0, 0.7);
-$_dark-semi-opaque-background-active: rgba(0, 0, 0, 0.9);
-$_light-semi-opaque-background: rgba(255, 255, 255, 0.5);
-$_light-semi-opaque-background-hover: rgba(255, 255, 255, 0.7);
-$_light-semi-opaque-background-active: rgba(255, 255, 255, 0.9);
+$_dark-barely-opaque: rgba(0, 0, 0, 0.5);
+$_dark-mostly-opaque: rgba(0, 0, 0, 0.7);
+$_dark-almost-opaque: rgba(0, 0, 0, 0.9);
+
+$_light-barely-opaque: rgba(242, 242, 242, 0.2);
+$_light-semi-opaque: rgba(242, 242, 242, 0.5);
+$_light-mostly-opaque: rgba(242, 242, 242, 0.7);
+$_light-almost-opaque: rgba(242, 242, 242, 0.9);

@@ -9,7 +9,7 @@
 	justify-content: center;
 
 	&:hover {
-		background-color: rgba(242, 242, 242, 0.2);
+		background-color: $_light-barely-opaque;
 	}
 
 	&.selected {

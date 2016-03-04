@@ -20,8 +20,18 @@
 	}
 
 	.teamSelector {
-		width: 50%;
+
+		width: calc(50% - (#{$_inner-margin} + #{$_inner-spacing}));
 		float: left;
+
+		&:first-of-type {
+			margin-right: $_inner-spacing;
+		}
+
+		&:last-of-type {
+			margin-left: $_inner-spacing;
+		}
+
 	}
 
 }

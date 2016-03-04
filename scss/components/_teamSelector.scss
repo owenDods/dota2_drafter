@@ -1,18 +1,26 @@
 .teamSelector {
 
-	width: 100%;
-	padding: $_inner-margin;
+	width: calc(100% - (#{$_inner-margin} * 2));
+	height: calc(100% - (#{$_inner-margin} * 3) - #{$_line-height});
+	margin: ($_inner-margin * 2 + $_line-height) $_inner-margin $_inner-margin;
+	padding: $_inner-spacing;
 	box-sizing: border-box;
+	background-color: $_light-barely-opaque;
+	border-radius: $_radius;
+	position: relative;
 
 	label {
 		width: 100%;
 		display: inline-block;
 		text-align: center;
+		position: absolute;
+		left: 0;
+		top: -($_line-height + $_inner-margin);
 	}
 
 	select {
-		width: 80%;
-		margin: $_inner-spacing 10% 0;
+		width: calc(100% - (#{$_inner-spacing} * 2));
+		margin: $_inner-spacing $_inner-spacing 0;
 		line-height: $_line-height-extra-large;
 		height: $_line-height-extra-large;
 	}

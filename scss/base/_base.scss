@@ -30,16 +30,16 @@ button {
 	font-size: $_font-size;
 	cursor: pointer;
 	color: $_off-white;
-	background-color: $_dark-semi-opaque-background;
+	background-color: $_dark-barely-opaque;
 
 	&:hover {
-		background-color: $_dark-semi-opaque-background-hover;
+		background-color: $_dark-mostly-opaque;
 		@include standardShadow($colour: $_shadow-colour-light);
 	}
 
 	&:active {
 		color: $_dark-grey;
-		background-color: $_light-semi-opaque-background-active;
+		background-color: $_light-almost-opaque;
 	}
 
 	&:focus {
