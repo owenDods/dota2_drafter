@@ -10,7 +10,7 @@ $draftConsole-team-label-height-large: $_line-height-large + $_inner-spacing;
 	bottom: 0;
 	left: 10%;
 	right: 10%;
-	background-color: #5C5E67;
+	background-color: $_grey;
 	border-top-left-radius: $_radius;
 	border-top-right-radius: $_radius;
 	@include standardShadow();

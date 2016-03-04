@@ -16,9 +16,11 @@ module.exports = React.createClass({
 
 			<div className="teamManager">
 
-				<TeamSelector url="http://jsonplaceholder.typicode.com/users" />
+				<label>Who will be drafting?</label>
 
-				<TeamSelector url="http://jsonplaceholder.typicode.com/users" />
+				<TeamSelector url="http://jsonplaceholder.typicode.com/users" teamLabel="Team 1" />
+
+				<TeamSelector url="http://jsonplaceholder.typicode.com/users" teamLabel="Team 2" />
 
 			</div>
 

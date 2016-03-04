@@ -53,11 +53,19 @@ module.exports = React.createClass({
 
 		return (
 
-			<select className="teamSelector">
+			<div className="teamSelector">
 
-				{selectOptions}
+				<label>{this.props.teamLabel}</label>
 
-			</select>
+				<select>
+
+					<option value="-1">Choose a team</option>
+
+					{selectOptions}
+
+				</select>
+
+			</div>
 
 		);
 

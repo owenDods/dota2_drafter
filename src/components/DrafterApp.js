@@ -55,6 +55,8 @@ module.exports = React.createClass({
 
 			<div className={'drafterApp' + (this.state.draftingActive ? ' drafterApp--draftingActive' : '')}>
 
+				<h1>Dota 2 2v2 Drafter</h1>
+
 				<TeamManager />
 
 				<HeroesGrid data={this.state.heroes} onSelect={this.onHeroSelect} selectionComplete={this.state.selectionComplete} />

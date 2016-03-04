@@ -11,6 +11,15 @@
 	height: 100%;
 	overflow: auto;
 
+	h1 {
+		width: 100%;
+		padding: $_inner-margin;
+		font-size: $_font-size-extra-large;
+		line-height: $_line-height-extra-large;
+		cursor: default;
+		background-color: $_dark-semi-opaque-background;
+	}
+
 	.teamManager {
 		@include transitionAll(.6s);
 	}
