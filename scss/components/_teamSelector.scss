@@ -3,7 +3,7 @@
 	width: calc(100% - (#{$_inner-margin} * 2));
 	height: calc(100% - (#{$_inner-margin} * 3) - #{$_line-height});
 	margin: ($_inner-margin * 2 + $_line-height) $_inner-margin $_inner-margin;
-	padding: $_inner-spacing;
+	padding: $_inner-margin;
 	box-sizing: border-box;
 	background-color: $_light-barely-opaque;
 	border-radius: $_radius;
@@ -19,8 +19,8 @@
 	}
 
 	select {
-		width: calc(100% - (#{$_inner-spacing} * 2));
-		margin: $_inner-spacing $_inner-spacing 0;
+		width: 100%;
+		margin: 0 0 $_inner-spacing;
 		line-height: $_line-height-extra-large;
 		height: $_line-height-extra-large;
 	}
