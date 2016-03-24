@@ -1,15 +1,19 @@
 var React = require('react');
 var request = require('ajax-request');
+var _ = require('underscore');
 
 var InputSubmit = require('./InputSubmit');
 
 module.exports = React.createClass({
 
+	idPrefix: 'team_',
+
 	getInitialState: function () {
 
 		return {
 			teams: [],
-			selectedTeam: null
+			selectedTeamId: null,
+			selectedTeamName: null
 		};
 
 	},
@@ -41,11 +45,32 @@ module.exports = React.createClass({
 
 	},
 
+	handleChange: function(event) {
+
+		var selectedTeamId = event.target.value;
+		var selectedTeamName = this.getTeamName(selectedTeamId);
+
+		this.setState({
+			selectedTeamId: selectedTeamId,
+			selectedTeamName: selectedTeamName
+		});
+
+	},
+
+	getTeamName: function(selectedTeamId) {
+
+		var teamId = selectedTeamId ? selectedTeamId.replace(this.idPrefix, '') : null;
+		var team = _.findWhere(this.state.teams, { id: parseInt(teamId) });
+
+		return team ? team.username : '';
+
+	},
+
 	render: function () {
 
 		var selectOptions = this.state.teams.map(function (team) {
 
-			var teamId = 'team_' + team.id;
+			var teamId = this.idPrefix + team.id;
 
 			return (
 
@@ -53,13 +78,13 @@ module.exports = React.createClass({
 
 			);
 
-		});
+		}.bind(this));
 
 		return (
 
 			<div className="teamSelector">
 
-				<select>
+				<select onChange={this.handleChange}>
 
 					<option value="-1">Choose a team</option>
 
@@ -73,7 +98,7 @@ module.exports = React.createClass({
 
 				<label>{this.props.teamLabel}</label>
 
-				<p>{this.state.selectedTeam}</p>
+				<p>{this.state.selectedTeamName}</p>
 
 			</div>
 
