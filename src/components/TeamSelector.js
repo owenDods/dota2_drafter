@@ -15,9 +15,45 @@ module.exports = React.createClass({
 
 		return {
 			teams: [],
+			selectedId: null,
 			selectedTeamId: null,
 			selectedTeamName: null
 		};
+
+	},
+
+	saveTeam: function(teamName) {
+
+		request({
+			url: this.props.url,
+			method: 'POST',
+			json: true,
+			data: {
+				name: teamName,
+				username: teamName
+			}
+		}, function (err, res, data) {
+
+			if (err) {
+
+				console.error(this.props.url, res.statusCode, err.toString());
+
+			} else {
+
+				var teams = this.state.teams;
+
+				teams.push(data);
+
+				this.setState({
+					teams: teams,
+					selectedId: data.id,
+					selectedTeamId: this.idPrefix + data.id.toString(),
+					selectedTeamName: data.username
+				});
+
+			}
+
+		}.bind(this));
 
 	},
 
@@ -54,6 +90,7 @@ module.exports = React.createClass({
 		var selectedTeamName = this.getTeamName(selectedTeamId);
 
 		this.setState({
+			selectedId: this.getTeamId(selectedTeamId),
 			selectedTeamId: selectedTeamId,
 			selectedTeamName: selectedTeamName
 		});
@@ -62,10 +99,18 @@ module.exports = React.createClass({
 
 	getTeamName: function(selectedTeamId) {
 
-		var teamId = selectedTeamId ? selectedTeamId.replace(this.idPrefix, '') : null;
+		var teamId = this.getTeamId(selectedTeamId);
 		var team = _.findWhere(this.state.teams, { id: parseInt(teamId) });
 
 		return team ? team.username : '';
+
+	},
+
+	getTeamId: function(selectedTeamId) {
+
+		selectedTeamId = selectedTeamId ? selectedTeamId.replace(this.idPrefix, '') : null;
+
+		return parseInt(selectedTeamId);
 
 	},
 
@@ -87,7 +132,7 @@ module.exports = React.createClass({
 
 			<div className={'teamSelector' + (this.state.selectedTeamId ? ' teamSelector--selected' : '')}>
 
-				<select onChange={this.handleChange}>
+				<select onChange={this.handleChange} value={this.state.selectedTeamId}>
 
 					<option value="-1">Choose a team</option>
 
@@ -97,7 +142,7 @@ module.exports = React.createClass({
 
 				<p>OR</p>
 
-				<InputSubmit placeholder="Create a new team" buttonText="Create" />
+				<InputSubmit placeholder="Create a new team" buttonText="Create" onSubmit={this.saveTeam} />
 
 				<label>{this.props.teamLabel}</label>
 

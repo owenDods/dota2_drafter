@@ -4,7 +4,15 @@ module.exports = React.createClass({
 
 	getInitialState: function () {
 
-		return {};
+		return {
+			value: null
+		};
+
+	},
+
+	handleChange: function (event) {
+
+		this.setState({ value: event.target.value });
 
 	},
 
@@ -14,11 +22,11 @@ module.exports = React.createClass({
 
 			<div className="inputSubmit">
 
-				<button>{this.props.buttonText}</button>
+				<button onClick={this.props.onSubmit.bind(null, this.state.value)}>{this.props.buttonText}</button>
 
 				<div>
 
-					<input placeholder={this.props.placeholder} type="text" />
+					<input placeholder={this.props.placeholder} type="text" value={this.state.value} onChange={this.handleChange} />
 
 				</div>
 
