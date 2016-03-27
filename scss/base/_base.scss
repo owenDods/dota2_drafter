@@ -28,6 +28,7 @@ h1 {
 p {
 	margin: 0 0 $_inner-spacing;
 	line-height: $_line-height;
+	box-sizing: border-box;
 }
 
 button {

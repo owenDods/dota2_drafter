@@ -4,6 +4,8 @@ var _ = require('underscore');
 var InlineSVG = require('svg-inline-react');
 
 var InputSubmit = require('./InputSubmit');
+var tick = require('../../img/tick.svg');
+var cross = require('../../img/cross.svg');
 
 module.exports = React.createClass({
 
@@ -48,7 +50,7 @@ module.exports = React.createClass({
 
 	handleChange: function(event) {
 
-		var selectedTeamId = event.target.value;
+		var selectedTeamId = event.target.value.substring(0, this.idPrefix.length) === this.idPrefix ? event.target.value : null;
 		var selectedTeamName = this.getTeamName(selectedTeamId);
 
 		this.setState({
@@ -101,7 +103,7 @@ module.exports = React.createClass({
 
 				<p className="teamSelector__selectedTeam">{this.state.selectedTeamName}</p>
 
-				<InlineSVG className="icon" src={require('../../img/tick.svg')} />
+				<InlineSVG className="icon" src={this.state.selectedTeamId ? tick : cross} />
 
 			</div>
 

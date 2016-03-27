@@ -34,6 +34,7 @@
 		border-radius: $_radius;
 		padding: $_inner-spacing;
 		text-align: center;
+		min-height: $_line-height + ($_inner-spacing * 2);
 	}
 
 }
