@@ -98,7 +98,7 @@ module.exports = React.createClass({
 
 				<label>{this.props.teamLabel}</label>
 
-				<p>{this.state.selectedTeamName}</p>
+				<p className="teamSelector__selectedTeam">{this.state.selectedTeamName}</p>
 
 			</div>
 

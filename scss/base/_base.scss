@@ -14,6 +14,7 @@ ul {
 
 label {
 	line-height: $_line-height;
+	margin: 0 0 $_inner-spacing;
 }
 
 h1 {
@@ -25,7 +26,7 @@ h1 {
 }
 
 p {
-	margin: 0;
+	margin: 0 0 $_inner-spacing;
 	line-height: $_line-height;
 }
 

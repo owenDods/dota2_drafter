@@ -9,20 +9,31 @@
 	border-radius: $_radius;
 	position: relative;
 
-	label {
-		width: 100%;
-		display: inline-block;
+	& > {
+
+		& select {
+			width: 100%;
+			margin: 0 0 $_inner-spacing;
+			line-height: $_line-height-extra-large;
+			height: $_line-height-extra-large;
+		}
+
+		& label {
+			width: 100%;
+			display: inline-block;
+		}
+
+		.inputSubmit {
+			margin-bottom: $_margin;
+		}
+
 	}
 
-	select {
-		width: 100%;
-		margin: 0 0 $_inner-spacing;
-		line-height: $_line-height-extra-large;
-		height: $_line-height-extra-large;
-	}
-
-	p {
-		margin-bottom: $_inner-spacing;
+	&__selectedTeam {
+		background-color: $_dark-grey;
+		border-radius: $_radius;
+		padding: $_inner-spacing;
+		text-align: center;
 	}
 
 }
