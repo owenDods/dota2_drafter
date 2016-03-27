@@ -9,6 +9,7 @@ $_radius: 5px;
 $_line-height: 20px;
 $_line-height-large: 30px;
 $_line-height-extra-large: 40px;
+$_line-height-huge: 50px;
 
 
 $_shadow-colour: #2F2F2F;
@@ -23,8 +24,10 @@ $_font-size-extra-large: 32px;
 $_off-white: #F2F2F2;
 $_grey: #5C5E67;
 $_dark-grey: #212325;
+$_green: #568A56;
+$_red: #7D3A3A;
 
-$_dark-barely-opaque: rgba(0, 0, 0, 0.5);
+$_dark-semi-opaque: rgba(0, 0, 0, 0.5);
 $_dark-mostly-opaque: rgba(0, 0, 0, 0.7);
 $_dark-almost-opaque: rgba(0, 0, 0, 0.9);
 
@@ -37,3 +40,4 @@ $_icon-size-small: 20px;
 $_icon-size: 30px;
 $_icon-size-large: 40px;
 $_icon-size-extra-large: 50px;
+$_icon-size-huge: 60px;

@@ -114,7 +114,7 @@ $draftConsole-team-label-height-large: $_line-height-large + $_inner-spacing;
 
 			label {
 				padding-top: $_inner-spacing;
-				background-color: $_dark-barely-opaque;
+				background-color: $_dark-semi-opaque;
 			}
 
 		}
@@ -161,11 +161,11 @@ $draftConsole-team-label-height-large: $_line-height-large + $_inner-spacing;
 	}
 
 	&--pick {
-		background-color: #568A56;
+		background-color: $_green;
 	}
 
 	&--ban {
-		background-color: #7D3A3A;
+		background-color: $_red;
 	}
 
 	&--selectionComplete {

@@ -5,7 +5,7 @@ var InlineSVG = require('svg-inline-react');
 
 var InputSubmit = require('./InputSubmit');
 var tick = require('../../img/tick.svg');
-var cross = require('../../img/cross.svg');
+var question = require('../../img/question.svg');
 
 module.exports = React.createClass({
 
@@ -85,7 +85,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<div className="teamSelector">
+			<div className={'teamSelector' + (this.state.selectedTeamId ? ' teamSelector--selected' : '')}>
 
 				<select onChange={this.handleChange}>
 
@@ -103,7 +103,7 @@ module.exports = React.createClass({
 
 				<p className="teamSelector__selectedTeam">{this.state.selectedTeamName}</p>
 
-				<InlineSVG className="icon" src={this.state.selectedTeamId ? tick : cross} />
+				<InlineSVG className="icon" src={this.state.selectedTeamId ? tick : question} />
 
 			</div>
 

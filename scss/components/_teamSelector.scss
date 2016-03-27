@@ -34,7 +34,26 @@
 		border-radius: $_radius;
 		padding: $_inner-spacing;
 		text-align: center;
-		min-height: $_line-height + ($_inner-spacing * 2);
+		min-height: $_line-height-huge + ($_inner-spacing * 2);
+		font-size: $_font-size-large;
+		line-height: $_line-height-huge;
+	}
+
+	.icon {
+
+		margin: $_margin auto 0;
+		display: block;
+		width: $_icon-size-large;
+		height: $_icon-size-large;
+
+		& > svg {
+			fill: $_dark-semi-opaque;
+		}
+
+	}
+
+	&--selected {
+		background-color: $_green;
 	}
 
 }
