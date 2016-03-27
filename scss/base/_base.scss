@@ -56,6 +56,13 @@ button {
 		outline: none;
 	}
 
+	&:disabled {
+		opacity: 0.2;
+		background-color: $_dark-semi-opaque;
+		box-shadow: none;
+		cursor: default;
+	}
+
 }
 
 select {

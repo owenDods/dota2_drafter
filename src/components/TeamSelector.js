@@ -22,7 +22,7 @@ module.exports = React.createClass({
 
 	},
 
-	saveTeam: function(teamName) {
+	saveTeam: function(teamName, callback) {
 
 		request({
 			url: this.props.url,
@@ -49,7 +49,7 @@ module.exports = React.createClass({
 					selectedId: data.id,
 					selectedTeamId: this.idPrefix + data.id.toString(),
 					selectedTeamName: data.username
-				});
+				}, callback);
 
 			}
 
