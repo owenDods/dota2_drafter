@@ -1,6 +1,7 @@
 var React = require('react');
 var request = require('ajax-request');
 var _ = require('underscore');
+var InlineSVG = require('svg-inline-react');
 
 var InputSubmit = require('./InputSubmit');
 
@@ -99,6 +100,8 @@ module.exports = React.createClass({
 				<label>{this.props.teamLabel}</label>
 
 				<p className="teamSelector__selectedTeam">{this.state.selectedTeamName}</p>
+
+				<InlineSVG className="icon" src={require('../../img/tick.svg')} />
 
 			</div>
 

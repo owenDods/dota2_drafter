@@ -8,6 +8,7 @@ var notify = require('gulp-notify');
 var uglify = require('gulp-uglify');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
+var svg = require('svg-browserify');
 
 var config = require('./gulp.config')();
 
@@ -28,20 +29,20 @@ function handleErrors() {
 
 var jsWatcher  = watchify(browserify({
 	entries: [config.js.src],
-	transform: [reactify],
+	transform: [reactify, svg],
 	debug: true,
 	cache: {},
 	packageCache: {},
 	fullPaths: true
 }));
 
-var jsCompile = function () {
+var jsCompile = function() {
 
 	jsWatcher.bundle()
 		.on('error', handleErrors)
 		.pipe(source(config.js.out))
 		.pipe(streamify(uglify()))
-		.pipe(gulp.dest(config.js.dest))
+		.pipe(gulp.dest(config.dest))
 		.pipe(browserSync.stream());
 
 	console.log('JS Compiled');
@@ -50,7 +51,7 @@ var jsCompile = function () {
 
 gulp.task('js-compile', jsCompile);
 
-gulp.task('js', ['js-compile'], function () {
+gulp.task('js', ['js-compile'], function() {
 
 	return jsWatcher.on('update', jsCompile);
 
@@ -60,22 +61,22 @@ gulp.task('browser-sync', function() {
 
 	browserSync.init({
 		server: {
-			baseDir: "./"
+			baseDir: './'
 		}
 	});
 
 });
 
-gulp.task('scss-compile', function () {
+gulp.task('scss-compile', function() {
 
 	return gulp.src(config.scss.src)
 		.pipe(sass().on('error', sass.logError))
-		.pipe(gulp.dest(config.scss.dest))
+		.pipe(gulp.dest(config.dest))
 		.pipe(browserSync.stream());
 
 });
 
-gulp.task('scss', ['scss-compile'], function () {
+gulp.task('scss', ['scss-compile'], function() {
 
 	gulp.watch('./scss/**/*.scss', ['scss-compile']);
 

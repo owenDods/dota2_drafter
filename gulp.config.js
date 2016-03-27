@@ -5,15 +5,15 @@ module.exports = function () {
 	var buildDest = './build';
 	var config = {
 
+		dest: buildDest,
+
 		js: {
 			src: './src/index.js',
-			out: 'bundle.js',
-			dest: buildDest
+			out: 'bundle.js'
 		},
 
 		scss: {
-			src: './scss/app.scss',
-			dest: buildDest
+			src: './scss/app.scss'
 		}
 
 	};
