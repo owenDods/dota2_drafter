@@ -16,13 +16,21 @@ module.exports = React.createClass({
 
 	},
 
+	onSubmit: function (event) {
+
+		event.preventDefault();
+
+		this.props.onSubmit(this.state.value);
+
+	},
+
 	render: function () {
 
 		return (
 
-			<div className="inputSubmit">
+			<form className="inputSubmit" onSubmit={this.onSubmit}>
 
-				<button onClick={this.props.onSubmit.bind(null, this.state.value)}>{this.props.buttonText}</button>
+				<button type="submit">{this.props.buttonText}</button>
 
 				<div>
 
@@ -30,7 +38,7 @@ module.exports = React.createClass({
 
 				</div>
 
-			</div>
+			</form>
 
 		);
 
