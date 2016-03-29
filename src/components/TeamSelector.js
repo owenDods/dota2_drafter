@@ -49,7 +49,13 @@ module.exports = React.createClass({
 					selectedId: data.id,
 					selectedTeamId: this.idPrefix + data.id.toString(),
 					selectedTeamName: data.username
-				}, callback);
+				}, function () {
+
+					this.updateParentState();
+
+					callback();
+
+				});
 
 			}
 
@@ -93,7 +99,13 @@ module.exports = React.createClass({
 			selectedId: this.getTeamId(selectedTeamId),
 			selectedTeamId: selectedTeamId,
 			selectedTeamName: selectedTeamName
-		});
+		}, this.updateParentState);
+
+	},
+
+	updateParentState: function () {
+
+		this.props.updateState(this.state.selectedTeamId ? !!this.state.selectedTeamId.length : false);
 
 	},
 
