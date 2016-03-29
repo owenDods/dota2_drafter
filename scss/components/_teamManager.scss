@@ -8,13 +8,27 @@
 	bottom: 50%;
 	transform: translateY(50%);
 
-	& > label {
-		width: 100%;
-		text-align: center;
-	    position: absolute;
-	    top: -($_line-height-large + $_margin);
-	    font-size: $_font-size-large;
-	    line-height: $_line-height-large;
+	& > {
+
+		label {
+			width: 100%;
+			text-align: center;
+			position: absolute;
+			top: -($_line-height-large + $_margin);
+			font-size: $_font-size-large;
+			line-height: $_line-height-large;
+		}
+
+		button {
+			float: left;
+			margin-top: 10px;
+			margin-left: 50%;
+			transform: translateX(-50%);
+			font-size: $_font-size-large;
+			padding: 0 $_inner-margin;
+			line-height: $_line-height-extra-large;
+		}
+
 	}
 
 	.teamSelector {
