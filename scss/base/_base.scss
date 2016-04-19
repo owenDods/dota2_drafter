@@ -66,6 +66,7 @@ button {
 }
 
 select {
+
 	height: $_line-height;
 	line-height: $_line-height;
 	-webkit-appearance: none;
@@ -77,6 +78,12 @@ select {
 	cursor: pointer;
 	color: $_dark-grey;
 	font-size: $_font-size-small;
+
+	&:disabled {
+		opacity: 0.2;
+		cursor: default;
+	}
+
 }
 
 input {

@@ -17,7 +17,8 @@ module.exports = React.createClass({
 			teams: [],
 			selectedId: null,
 			selectedTeamId: null,
-			selectedTeamName: null
+			selectedTeamName: null,
+			saving: false
 		};
 
 	},
@@ -25,6 +26,8 @@ module.exports = React.createClass({
 	saveTeam: function(teamName) {
 
 		var save = function (resolve, reject) {
+
+			this.setState({ saving: true });
 
 			request({
 				url: this.props.url,
@@ -38,6 +41,8 @@ module.exports = React.createClass({
 
 				if (err) {
 
+					this.setState({ saving: false });
+
 					reject(console.error(this.props.url, res.statusCode, err.toString()));
 
 				} else {
@@ -50,7 +55,8 @@ module.exports = React.createClass({
 						teams: teams,
 						selectedId: data.id,
 						selectedTeamId: this.idPrefix + data.id.toString(),
-						selectedTeamName: data.username
+						selectedTeamName: data.username,
+						saving: false
 					}, function () {
 
 						this.updateParentState();
@@ -150,7 +156,7 @@ module.exports = React.createClass({
 
 			<div className={'teamSelector' + (this.state.selectedTeamId ? ' teamSelector--selected' : '')}>
 
-				<select onChange={this.handleChange} value={this.state.selectedTeamId}>
+				<select onChange={this.handleChange} value={this.state.selectedTeamId} disabled={this.state.saving}>
 
 					<option value="-1">Choose a team</option>
 
