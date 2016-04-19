@@ -22,44 +22,50 @@ module.exports = React.createClass({
 
 	},
 
-	saveTeam: function(teamName, callback) {
+	saveTeam: function(teamName) {
 
-		request({
-			url: this.props.url,
-			method: 'POST',
-			json: true,
-			data: {
-				name: teamName,
-				username: teamName
-			}
-		}, function (err, res, data) {
+		var save = function (resolve, reject) {
 
-			if (err) {
+			request({
+				url: this.props.url,
+				method: 'POST',
+				json: true,
+				data: {
+					name: teamName,
+					username: teamName
+				}
+			}, function (err, res, data) {
 
-				console.error(this.props.url, res.statusCode, err.toString());
+				if (err) {
 
-			} else {
+					reject(console.error(this.props.url, res.statusCode, err.toString()));
 
-				var teams = this.state.teams;
+				} else {
 
-				teams.push(data);
+					var teams = this.state.teams;
 
-				this.setState({
-					teams: teams,
-					selectedId: data.id,
-					selectedTeamId: this.idPrefix + data.id.toString(),
-					selectedTeamName: data.username
-				}, function () {
+					teams.push(data);
 
-					this.updateParentState();
+					this.setState({
+						teams: teams,
+						selectedId: data.id,
+						selectedTeamId: this.idPrefix + data.id.toString(),
+						selectedTeamName: data.username
+					}, function () {
 
-					callback();
+						this.updateParentState();
 
-				});
+						resolve();
 
-			}
+					});
 
-		}.bind(this));
+				}
+
+			}.bind(this));
+
+		}.bind(this);
+
+		return new Promise(save);
 
 	},
 

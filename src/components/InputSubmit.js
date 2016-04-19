@@ -40,7 +40,7 @@ module.exports = React.createClass({
 
 		if (this.state.valid) {
 
-			this.props.onSubmit(this.state.value, this.reset);
+			this.props.onSubmit(this.state.value).then(this.reset);
 
 		}
 
