@@ -166,7 +166,7 @@ module.exports = React.createClass({
 
 				<p>OR</p>
 
-				<InputSubmit placeholder="Create a new team" buttonText="Create" onSubmit={this.saveTeam} />
+				<InputSubmit placeholder="Create a new team" buttonText="Create" onSubmit={this.saveTeam} disabled={this.state.saving} />
 
 				<label>{this.props.teamLabel}</label>
 

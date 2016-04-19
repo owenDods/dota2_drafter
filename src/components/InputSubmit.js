@@ -52,11 +52,11 @@ module.exports = React.createClass({
 
 			<form className="inputSubmit" onSubmit={this.onSubmit}>
 
-				<button type="submit" disabled={!this.state.valid}>{this.props.buttonText}</button>
+				<button type="submit" disabled={this.props.disabled || !this.state.valid}>{this.props.buttonText}</button>
 
 				<div>
 
-					<input placeholder={this.props.placeholder} type="text" value={this.state.value} onChange={this.handleChange} />
+					<input placeholder={this.props.placeholder} type="text" value={this.state.value} onChange={this.handleChange} disabled={this.props.disabled} />
 
 				</div>
 

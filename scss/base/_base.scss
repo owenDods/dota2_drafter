@@ -87,6 +87,7 @@ select {
 }
 
 input {
+
 	height: $_line-height;
 	line-height: $_line-height;
 	padding: 0 $_inner-spacing;
@@ -95,4 +96,10 @@ input {
 	box-sizing: border-box;
 	color: $_dark-grey;
 	font-size: $_font-size-small;
+
+	&:disabled {
+		opacity: 0.2;
+		cursor: default;
+	}
+
 }
