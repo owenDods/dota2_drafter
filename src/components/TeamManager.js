@@ -37,7 +37,7 @@ module.exports = React.createClass({
 
 				<TeamSelector url="http://jsonplaceholder.typicode.com/users" teamLabel="Team 2" updateState={this.updateTeam2State} />
 
-				<button disabled={!(this.state.team1Ready && this.state.team2Ready)}>Draft</button>
+				<button disabled={!(this.state.team1Ready && this.state.team2Ready)} onClick={this.props.startDraft}>Draft</button>
 
 			</div>
 

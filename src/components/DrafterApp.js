@@ -49,6 +49,12 @@ module.exports = React.createClass({
 
 	},
 
+	startDraft: function () {
+
+		this.setState({ draftingActive: true });
+
+	},
+
 	render: function () {
 
 		return (
@@ -57,7 +63,7 @@ module.exports = React.createClass({
 
 				<h1>Dota 2 2v2 Drafter</h1>
 
-				<TeamManager />
+				<TeamManager startDraft={this.startDraft} />
 
 				<HeroesGrid data={this.state.heroes} onSelect={this.onHeroSelect} selectionComplete={this.state.selectionComplete} />
 
