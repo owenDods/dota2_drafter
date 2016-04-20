@@ -28,7 +28,7 @@ module.exports = React.createClass({
 
 		var save = function (resolve, reject) {
 
-			this.setState({ saving: true });
+			this.setState({ saving: true }, this.updateParentState);
 
 			request({
 				url: this.props.url,
@@ -42,7 +42,7 @@ module.exports = React.createClass({
 
 				if (err) {
 
-					this.setState({ saving: false });
+					this.setState({ saving: false }, this.updateParentState);
 
 					reject(console.error(this.props.url, res.statusCode, err.toString()));
 
@@ -118,7 +118,10 @@ module.exports = React.createClass({
 
 	updateParentState: function () {
 
-		this.props.updateState(this.state.selectedTeamId ? !!this.state.selectedTeamId.length : false);
+		var teamSelected = this.state.selectedTeamId ? !!this.state.selectedTeamId.length : false;
+		var notSaving = !this.state.saving;
+
+		this.props.updateState(teamSelected && notSaving);
 
 	},
 
