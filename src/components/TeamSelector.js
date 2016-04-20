@@ -15,11 +15,10 @@ module.exports = React.createClass({
 	getInitialState: function () {
 
 		return {
-			teams: [],
 			selectedId: null,
 			selectedTeamId: null,
 			selectedTeamName: null,
-			processing: 'Fetching Teams'
+			processing: null
 		};
 
 	},
@@ -48,12 +47,9 @@ module.exports = React.createClass({
 
 				} else {
 
-					var teams = this.state.teams;
-
-					teams.push(data);
+					this.props.teams.push(data);
 
 					this.setState({
-						teams: teams,
 						selectedId: data.id,
 						selectedTeamId: this.idPrefix + data.id.toString(),
 						selectedTeamName: data.username,
@@ -73,36 +69,6 @@ module.exports = React.createClass({
 		}.bind(this);
 
 		return new Promise(save);
-
-	},
-
-	loadTeams: function() {
-
-		request({
-			url: this.props.url,
-			json: true
-		}, function (err, res, data) {
-
-			if (err) {
-
-				console.error(this.props.url, res.statusCode, err.toString());
-
-			} else {
-
-				this.setState({
-					teams: data,
-					processing: null
-				});
-
-			}
-
-		}.bind(this));
-
-	},
-
-	componentDidMount: function() {
-
-		this.loadTeams();
 
 	},
 
@@ -131,7 +97,7 @@ module.exports = React.createClass({
 	getTeamName: function(selectedTeamId) {
 
 		var teamId = this.getTeamId(selectedTeamId);
-		var team = _.findWhere(this.state.teams, { id: parseInt(teamId) });
+		var team = _.findWhere(this.props.teams, { id: parseInt(teamId) });
 
 		return team ? team.username : '';
 
@@ -147,7 +113,7 @@ module.exports = React.createClass({
 
 	render: function () {
 
-		var selectOptions = this.state.teams.map(function (team) {
+		var selectOptions = this.props.teams.map(function (team) {
 
 			var teamId = this.idPrefix + team.id;
 
@@ -161,7 +127,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<div className={'teamSelector' + (this.state.selectedTeamId ? ' teamSelector--selected' : '') + (this.state.processing ? ' teamSelector--processing' : '')}>
+			<div className={'teamSelector' + (this.state.selectedTeamId ? ' teamSelector--selected' : '') + (this.props.processing || this.state.processing ? ' teamSelector--processing' : '')}>
 
 				<select onChange={this.handleChange} value={this.state.selectedTeamId} disabled={this.state.processing}>
 
@@ -185,7 +151,7 @@ module.exports = React.createClass({
 
 					<InlineSVG className="icon icon__spinner teamSelector__spinner" src={spinner} />
 
-					<p>{this.state.processing}</p>
+					<p>{this.props.processing || this.state.processing}</p>
 
 				</div>
 
