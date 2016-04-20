@@ -6,6 +6,7 @@ var InlineSVG = require('svg-inline-react');
 var InputSubmit = require('./InputSubmit');
 var tick = require('../../img/tick.svg');
 var question = require('../../img/question.svg');
+var spinner = require('../../img/spinner.svg');
 
 module.exports = React.createClass({
 
@@ -154,7 +155,7 @@ module.exports = React.createClass({
 
 		return (
 
-			<div className={'teamSelector' + (this.state.selectedTeamId ? ' teamSelector--selected' : '')}>
+			<div className={'teamSelector' + (this.state.selectedTeamId ? ' teamSelector--selected' : '') + (this.state.saving ? ' teamSelector--saving' : '')}>
 
 				<select onChange={this.handleChange} value={this.state.selectedTeamId} disabled={this.state.saving}>
 
@@ -173,6 +174,12 @@ module.exports = React.createClass({
 				<p className="teamSelector__selectedTeam">{this.state.selectedTeamName}</p>
 
 				<InlineSVG className="icon" src={this.state.selectedTeamId ? tick : question} />
+
+				<div className="teamSelector__overlay">
+
+					<InlineSVG className="icon icon__spinner teamSelector__spinner" src={spinner} />
+
+				</div>
 
 			</div>
 

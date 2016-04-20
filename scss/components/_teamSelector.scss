@@ -8,6 +8,7 @@
 	background-color: $_light-barely-opaque;
 	border-radius: $_radius;
 	position: relative;
+	overflow: hidden;
 
 	& > {
 
@@ -39,6 +40,19 @@
 		line-height: $_line-height-huge;
 	}
 
+	&__overlay {
+		visibility: hidden;
+		opacity: 0;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-color: $_light-almost-opaque;
+		border-radius: $_radius;
+		@include transitionAll();
+	}
+
 	.icon {
 
 		margin: $_margin auto 0;
@@ -50,10 +64,28 @@
 			fill: $_dark-semi-opaque;
 		}
 
+		&__spinner {
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			margin: auto;
+		}
+
 	}
 
 	&--selected {
 		background-color: $_green;
+	}
+
+	&--saving {
+
+		.teamSelector__overlay {
+			visibility: visible;
+			opacity: 1;
+		}
+
 	}
 
 }

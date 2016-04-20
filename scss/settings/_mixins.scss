@@ -30,3 +30,7 @@
 	}
 
 }
+
+@mixin animate($animation: spin) {
+	animation: $animation 3s infinite linear;
+}
