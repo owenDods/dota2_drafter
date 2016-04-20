@@ -19,7 +19,7 @@ module.exports = React.createClass({
 			selectedId: null,
 			selectedTeamId: null,
 			selectedTeamName: null,
-			saving: false
+			processing: 'Fetching Teams'
 		};
 
 	},
@@ -28,7 +28,7 @@ module.exports = React.createClass({
 
 		var save = function (resolve, reject) {
 
-			this.setState({ saving: true }, this.updateParentState);
+			this.setState({ processing: 'Saving' }, this.updateParentState);
 
 			request({
 				url: this.props.url,
@@ -42,7 +42,7 @@ module.exports = React.createClass({
 
 				if (err) {
 
-					this.setState({ saving: false }, this.updateParentState);
+					this.setState({ processing: null }, this.updateParentState);
 
 					reject(console.error(this.props.url, res.statusCode, err.toString()));
 
@@ -57,7 +57,7 @@ module.exports = React.createClass({
 						selectedId: data.id,
 						selectedTeamId: this.idPrefix + data.id.toString(),
 						selectedTeamName: data.username,
-						saving: false
+						processing: null
 					}, function () {
 
 						this.updateParentState();
@@ -89,7 +89,10 @@ module.exports = React.createClass({
 
 			} else {
 
-				this.setState({ teams: data });
+				this.setState({
+					teams: data,
+					processing: null
+				});
 
 			}
 
@@ -119,9 +122,9 @@ module.exports = React.createClass({
 	updateParentState: function () {
 
 		var teamSelected = this.state.selectedTeamId ? !!this.state.selectedTeamId.length : false;
-		var notSaving = !this.state.saving;
+		var notProcessing = !this.state.processing;
 
-		this.props.updateState(teamSelected && notSaving);
+		this.props.updateState(teamSelected && notProcessing);
 
 	},
 
@@ -158,9 +161,9 @@ module.exports = React.createClass({
 
 		return (
 
-			<div className={'teamSelector' + (this.state.selectedTeamId ? ' teamSelector--selected' : '') + (this.state.saving ? ' teamSelector--saving' : '')}>
+			<div className={'teamSelector' + (this.state.selectedTeamId ? ' teamSelector--selected' : '') + (this.state.processing ? ' teamSelector--processing' : '')}>
 
-				<select onChange={this.handleChange} value={this.state.selectedTeamId} disabled={this.state.saving}>
+				<select onChange={this.handleChange} value={this.state.selectedTeamId} disabled={this.state.processing}>
 
 					<option value="-1">Choose a team</option>
 
@@ -170,7 +173,7 @@ module.exports = React.createClass({
 
 				<p>OR</p>
 
-				<InputSubmit placeholder="Create a new team" buttonText="Create" onSubmit={this.saveTeam} disabled={this.state.saving} />
+				<InputSubmit placeholder="Create a new team" buttonText="Create" onSubmit={this.saveTeam} disabled={this.state.processing} />
 
 				<label>{this.props.teamLabel}</label>
 
@@ -181,6 +184,8 @@ module.exports = React.createClass({
 				<div className="teamSelector__overlay">
 
 					<InlineSVG className="icon icon__spinner teamSelector__spinner" src={spinner} />
+
+					<p>{this.state.processing}</p>
 
 				</div>
 

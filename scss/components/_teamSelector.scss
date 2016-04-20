@@ -41,6 +41,7 @@
 	}
 
 	&__overlay {
+
 		visibility: hidden;
 		opacity: 0;
 		position: absolute;
@@ -51,6 +52,17 @@
 		background-color: $_light-almost-opaque;
 		border-radius: $_radius;
 		@include transitionAll();
+
+		p {
+			color: $_dark-grey;
+			width: 100%;
+			text-align: center;
+			position: absolute;
+			bottom: 50%;
+			transform: translateY(50%);
+			margin: 0 0 #{-$_line-height} 0;
+		}
+
 	}
 
 	.icon {
@@ -65,12 +77,8 @@
 		}
 
 		&__spinner {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			margin: auto;
+			@include positionCentre();
+			bottom: $_line-height * 2;
 		}
 
 	}
@@ -79,7 +87,7 @@
 		background-color: $_green;
 	}
 
-	&--saving {
+	&--processing {
 
 		.teamSelector__overlay {
 			visibility: visible;
