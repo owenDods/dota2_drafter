@@ -1,5 +1,6 @@
 var React = require('react');
 var request = require('ajax-request');
+var _ = require('underscore');
 
 var TeamSelector = require('./TeamSelector');
 
@@ -46,15 +47,27 @@ module.exports = React.createClass({
 
 	},
 
-	updateTeam1State: function (ready) {
+	updateTeam1State: function (ready, selectedTeamId) {
 
 		this.setState({ team1Ready: ready });
 
+		this.updateSelectedTeam('team1', selectedTeamId);
+
 	},
 
-	updateTeam2State: function (ready) {
+	updateTeam2State: function (ready, selectedTeamId) {
 
 		this.setState({ team2Ready: ready });
+
+		this.updateSelectedTeam('team2', selectedTeamId);
+
+	},
+
+	updateSelectedTeam: function (teamName, selectedTeamId) {
+
+		var selectedTeam = _.findWhere(this.state.teams, { id: selectedTeamId });
+
+		this.props.updateSelectedTeam(teamName, selectedTeam);
 
 	},
 
@@ -66,9 +79,9 @@ module.exports = React.createClass({
 
 				<label>Who will be drafting?</label>
 
-				<TeamSelector url={this.props.url} teamLabel="Team 1" updateState={this.updateTeam1State} processing={this.state.processing} teams={this.state.teams} />
+				<TeamSelector url={this.props.url} teamLabel="Team 1" updateTeamSelection={this.updateTeam1State} processing={this.state.processing} teams={this.state.teams} />
 
-				<TeamSelector url={this.props.url} teamLabel="Team 2" updateState={this.updateTeam2State} processing={this.state.processing} teams={this.state.teams} />
+				<TeamSelector url={this.props.url} teamLabel="Team 2" updateTeamSelection={this.updateTeam2State} processing={this.state.processing} teams={this.state.teams} />
 
 				<button disabled={!(this.state.team1Ready && this.state.team2Ready)} onClick={this.props.startDraft}>Draft</button>
 

@@ -89,6 +89,8 @@ module.exports = React.createClass({
 
 		var selectedHeroes = this.renderSelectedHeroes();
 		var finalSelection = this.state.displayResult ? this.renderSelectedHeroes(true) : undefined;
+		var team1 = (this.props.team1 ? this.props.team1.username : null) || 'Team 1';
+		var team2 = (this.props.team2 ? this.props.team2.username : null) || 'Team 2';
 
 		return (
 
@@ -97,35 +99,35 @@ module.exports = React.createClass({
 				<ul className="draftConsole__placeholder">
 
 					<li>
-						<label className="draftConsole__teamLabel">Team 1</label>
+						<label className="draftConsole__teamLabel">{team1}</label>
 						<label>Ban</label>
 					</li>
 					<li>
-						<label className="draftConsole__teamLabel">Team 2</label>
+						<label className="draftConsole__teamLabel">{team2}</label>
 						<label>Ban</label>
 					</li>
 					<li>
-						<label className="draftConsole__teamLabel">Team 1</label>
+						<label className="draftConsole__teamLabel">{team1}</label>
 						<label>Pick</label>
 					</li>
 					<li>
-						<label className="draftConsole__teamLabel">Team 2</label>
+						<label className="draftConsole__teamLabel">{team2}</label>
 						<label>Pick</label>
 					</li>
 					<li>
-						<label className="draftConsole__teamLabel">Team 1</label>
+						<label className="draftConsole__teamLabel">{team1}</label>
 						<label>Ban</label>
 					</li>
 					<li>
-						<label className="draftConsole__teamLabel">Team 2</label>
+						<label className="draftConsole__teamLabel">{team2}</label>
 						<label>Ban</label>
 					</li>
 					<li>
-						<label className="draftConsole__teamLabel">Team 1</label>
+						<label className="draftConsole__teamLabel">{team1}</label>
 						<label>Pick</label>
 					</li>
 					<li>
-						<label className="draftConsole__teamLabel">Team 2</label>
+						<label className="draftConsole__teamLabel">{team2}</label>
 						<label>Pick</label>
 					</li>
 
@@ -139,9 +141,9 @@ module.exports = React.createClass({
 
 				<ul className="draftConsole__finalSelection">
 
-					<label>Team 1</label>
+					<label>{team1}</label>
 
-					<label>Team 2</label>
+					<label>{team2}</label>
 
 					<p>VS</p>
 

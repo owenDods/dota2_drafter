@@ -90,7 +90,7 @@ module.exports = React.createClass({
 		var teamSelected = this.state.selectedTeamId ? !!this.state.selectedTeamId.length : false;
 		var notProcessing = !this.state.processing;
 
-		this.props.updateState(teamSelected && notProcessing);
+		this.props.updateTeamSelection(teamSelected && notProcessing, this.state.selectedId);
 
 	},
 
