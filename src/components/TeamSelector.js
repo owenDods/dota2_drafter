@@ -1,31 +1,79 @@
-var React = require('react');
-var request = require('ajax-request');
-var _ = require('underscore');
-var InlineSVG = require('svg-inline-react');
+import React, { Component, PropTypes } from 'react';
+import request from 'ajax-request';
+import _ from 'underscore';
+import InlineSVG from 'svg-inline-react';
 
-var InputSubmit = require('./InputSubmit');
-var tick = require('../../img/tick.svg');
-var question = require('../../img/question.svg');
-var spinner = require('../../img/spinner.svg');
+import InputSubmit from './InputSubmit';
+import tick from '../../img/tick.svg';
+import question from '../../img/question.svg';
+import spinner from '../../img/spinner.svg';
 
-module.exports = React.createClass({
+const className = 'teamSelector';
 
-	idPrefix: 'team_',
+class TeamSelector extends Component {
 
-	getInitialState: function () {
+	constructor(props) {
 
-		return {
+		super(props);
+
+		this.idPrefix = 'team_';
+
+		this.state = {
 			selectedId: null,
 			selectedTeamId: null,
 			selectedTeamName: null,
 			processing: null
 		};
 
-	},
+		this.saveTeam = this.saveTeam.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 
-	saveTeam: function(teamName) {
+	}
 
-		var save = function (resolve, reject) {
+	getTeamName(selectedTeamId) {
+
+		const teamId = this.getTeamId(selectedTeamId);
+		const team = _.findWhere(this.props.teams, { id: parseInt(teamId, 10) });
+
+		return team ? team.username : '';
+
+	}
+
+	getTeamId(selectedTeamId) {
+
+		const teamId = selectedTeamId ? selectedTeamId.slice().replace(this.idPrefix, '') : null;
+
+		return parseInt(teamId, 10);
+
+	}
+
+	updateParentState() {
+
+		const teamSelected = this.state.selectedTeamId ? !!this.state.selectedTeamId.length : false;
+		const notProcessing = !this.state.processing;
+
+		this.props.updateTeamSelection(teamSelected && notProcessing, this.state.selectedId);
+
+	}
+
+	handleChange(event) {
+
+		const { value } = event.target;
+		const { idPrefix } = this;
+		const selectedTeamId = value.substring(0, idPrefix.length) === idPrefix ? value : null;
+		const selectedTeamName = this.getTeamName(selectedTeamId);
+
+		this.setState({
+			selectedId: this.getTeamId(selectedTeamId),
+			selectedTeamId,
+			selectedTeamName
+		}, this.updateParentState);
+
+	}
+
+	saveTeam(teamName) {
+
+		const save = (resolve, reject) => {
 
 			this.setState({ processing: 'Saving' }, this.updateParentState);
 
@@ -37,13 +85,13 @@ module.exports = React.createClass({
 					name: teamName,
 					username: teamName
 				}
-			}, function (err, res, data) {
+			}, (err, res, data) => {
 
 				if (err) {
 
 					this.setState({ processing: null }, this.updateParentState);
 
-					reject(console.error(this.props.url, res.statusCode, err.toString()));
+					reject(this.props.url, res.statusCode, err.toString());
 
 				} else {
 
@@ -54,7 +102,7 @@ module.exports = React.createClass({
 						selectedTeamId: this.idPrefix + data.id.toString(),
 						selectedTeamName: data.username,
 						processing: null
-					}, function () {
+					}, () => {
 
 						this.updateParentState();
 
@@ -64,58 +112,19 @@ module.exports = React.createClass({
 
 				}
 
-			}.bind(this));
+			});
 
-		}.bind(this);
+		};
 
 		return new Promise(save);
 
-	},
+	}
 
-	handleChange: function(event) {
+	render() {
 
-		var selectedTeamId = event.target.value.substring(0, this.idPrefix.length) === this.idPrefix ? event.target.value : null;
-		var selectedTeamName = this.getTeamName(selectedTeamId);
+		const selectOptions = this.props.teams.map((team) => {
 
-		this.setState({
-			selectedId: this.getTeamId(selectedTeamId),
-			selectedTeamId: selectedTeamId,
-			selectedTeamName: selectedTeamName
-		}, this.updateParentState);
-
-	},
-
-	updateParentState: function () {
-
-		var teamSelected = this.state.selectedTeamId ? !!this.state.selectedTeamId.length : false;
-		var notProcessing = !this.state.processing;
-
-		this.props.updateTeamSelection(teamSelected && notProcessing, this.state.selectedId);
-
-	},
-
-	getTeamName: function(selectedTeamId) {
-
-		var teamId = this.getTeamId(selectedTeamId);
-		var team = _.findWhere(this.props.teams, { id: parseInt(teamId) });
-
-		return team ? team.username : '';
-
-	},
-
-	getTeamId: function(selectedTeamId) {
-
-		selectedTeamId = selectedTeamId ? selectedTeamId.replace(this.idPrefix, '') : null;
-
-		return parseInt(selectedTeamId);
-
-	},
-
-	render: function () {
-
-		var selectOptions = this.props.teams.map(function (team) {
-
-			var teamId = this.idPrefix + team.id;
+			const teamId = this.idPrefix + team.id;
 
 			return (
 
@@ -123,13 +132,23 @@ module.exports = React.createClass({
 
 			);
 
-		}.bind(this));
+		});
+
+		const { selectedTeamId, processing: stateProcessing } = this.state;
+		const { processing } = this.props;
+		const selectedClass = selectedTeamId ? ` ${className}--selected` : '';
+		const processingClass = (processing || stateProcessing) ? ` ${className}--processing` : '';
+		const componentClass = `${className}${selectedClass}${processingClass}`;
 
 		return (
 
-			<div className={'teamSelector' + (this.state.selectedTeamId ? ' teamSelector--selected' : '') + (this.props.processing || this.state.processing ? ' teamSelector--processing' : '')}>
+			<div className={componentClass}>
 
-				<select onChange={this.handleChange} value={this.state.selectedTeamId} disabled={this.state.processing}>
+				<select
+					onChange={this.handleChange}
+					value={this.state.selectedTeamId}
+					disabled={this.state.processing}
+				>
 
 					<option value="-1">Choose a team</option>
 
@@ -139,7 +158,12 @@ module.exports = React.createClass({
 
 				<p>OR</p>
 
-				<InputSubmit placeholder="Create a new team" buttonText="Create" onSubmit={this.saveTeam} disabled={this.state.processing} />
+				<InputSubmit
+					placeholder="Create a new team"
+					buttonText="Create"
+					onSubmit={this.saveTeam}
+					disabled={this.state.processing}
+				/>
 
 				<label>{this.props.teamLabel}</label>
 
@@ -161,4 +185,14 @@ module.exports = React.createClass({
 
 	}
 
-});
+}
+
+TeamSelector.propTypes = {
+	teams: PropTypes.array,
+	teamLabel: PropTypes.string,
+	processing: PropTypes.any,
+	updateTeamSelection: PropTypes.func,
+	url: PropTypes.string
+};
+
+export default TeamSelector;

@@ -4,6 +4,10 @@
         'react'
     ],
     'rules': {
-    	'react/jsx-indent': [ 2, 'tab' ]
+    	'react/jsx-indent': [ 2, 'tab' ],
+    	'react/jsx-indent-props': [ 2, 'tab' ],
+    	'comma-dangle': [ 2, 'never' ],
+    	'padded-blocks': [ 2, 'always' ],
+    	'indent': [ 2, 'tab', { 'SwitchCase': 1 } ]
     }
 }

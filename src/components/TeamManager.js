@@ -2,7 +2,7 @@ var React = require('react');
 var request = require('ajax-request');
 var _ = require('underscore');
 
-var TeamSelector = require('./TeamSelector');
+import TeamSelector from './TeamSelector';
 
 module.exports = React.createClass({
 
