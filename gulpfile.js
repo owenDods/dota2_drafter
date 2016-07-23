@@ -90,7 +90,7 @@ gulp.task('scss', ['scss-compile'], function() {
 
 gulp.task('lint', () => {
 
-	return gulp.src(['**/*.js','!node_modules/**'])
+	return gulp.src(['**/*.js','!node_modules/**','!bower_components/**', '!build/**'])
 		.pipe(eslint())
 		.pipe(eslint.format())
 		.pipe(eslint.failAfterError());
