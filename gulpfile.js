@@ -3,6 +3,7 @@ var browserify = require('browserify');
 var source = require('vinyl-source-stream');
 var watchify = require('watchify');
 var reactify = require('reactify');
+var babelify = require('babelify');
 var streamify = require('gulp-streamify');
 var notify = require('gulp-notify');
 var uglify = require('gulp-uglify');
@@ -29,8 +30,12 @@ function handleErrors() {
 }
 
 var jsWatcher  = watchify(browserify({
-	entries: [config.js.src],
-	transform: [reactify, svg],
+	entries: [ config.js.src ],
+	transform: [
+		[ babelify, { presets: [ 'es2015', 'react'] } ],
+		[ reactify, { es6: true } ],
+		svg
+	],
 	debug: true,
 	cache: {},
 	packageCache: {},
