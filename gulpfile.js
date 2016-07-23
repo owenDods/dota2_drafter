@@ -9,6 +9,7 @@ var uglify = require('gulp-uglify');
 var browserSync = require('browser-sync').create();
 var sass = require('gulp-sass');
 var svg = require('svg-browserify');
+const eslint = require('gulp-eslint');
 
 var config = require('./gulp.config')();
 
@@ -79,6 +80,15 @@ gulp.task('scss-compile', function() {
 gulp.task('scss', ['scss-compile'], function() {
 
 	gulp.watch('./scss/**/*.scss', ['scss-compile']);
+
+});
+
+gulp.task('lint', () => {
+
+	return gulp.src(['**/*.js','!node_modules/**'])
+		.pipe(eslint())
+		.pipe(eslint.format())
+		.pipe(eslint.failAfterError());
 
 });
 
